@@ -20,6 +20,10 @@ fraction, r the reliability (one value or one per feature) and k the SD of obser
 with the spatial correlation of deviation maps (`R_signal`), E with the spatial correlation of the
 difference between two measurements (`R_noise`); either may be omitted (independent features).
 
+Deviation scores often have heavier tails than a Gaussian. With `marginal=` (observed deviation scores of
+the group, or `marginal_quantiles` of them), the Gaussian values are mapped onto that empirical distribution
+(a Gaussian copula), so simulated extremes occur at the observed rate at every threshold.
+
 Overlap metrics (extremes are |z| > threshold, with sign):
 
 | metric | definition |
@@ -70,8 +74,10 @@ correlation matrices and per-feature reliability only).
   split-half reliability to full length).
 - When deviations were adjusted with site-level estimates, errors in those estimates are shared within a
   site and change within-site overlap; compare groups on between-site pairs (`blocks=`).
-- The model is Gaussian; heavy-tailed deviation distributions change the extreme rate. Check that the
-  simulated extreme rate matches the observed one before interpreting the baseline.
+- With the default Gaussian marginal, heavy tails make the baseline underestimate coincidences of strict
+  extremes; pass `marginal=` (CLI: `--empirical-marginal`) and check that simulated and observed extreme
+  rates agree. Reliability then refers to the latent Gaussian scale; check that the median ICC of two
+  simulated measurements matches the observed one and rescale reliability if it does not.
 - `test_heterogeneous_null` asks whether overlap exceeds that expected from fully individual deviations;
   `implied_shared_fraction` inverts the baseline curve (interval from the 2.5–97.5% simulation bands).
 

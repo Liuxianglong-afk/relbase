@@ -3,7 +3,7 @@ import unittest
 
 import numpy as np
 
-from relbase import (BaselineModel, estimate_inputs, icc21, implied_shared_fraction, max_prevalence, mean_jaccard,
+from relbase import (BaselineModel, estimate_inputs, icc21, implied_shared_fraction, marginal_quantiles, max_prevalence, mean_jaccard,
                      mean_prevalence, spearman_brown)
 
 
@@ -93,6 +93,31 @@ class TestModel(unittest.TestCase):
         self.assertLess(res["p_one_sided"], 0.05)
         res = self.model.test_heterogeneous_null(0.0, 40, 0.5, reps=50)
         self.assertEqual(res["p_one_sided"], 1.0)
+
+
+class TestMarginal(unittest.TestCase):
+    def test_reproduces_heavy_tails(self):
+        rng = np.random.default_rng(6)
+        heavy = rng.standard_t(4, 200000) / np.sqrt(2)  # unit variance, heavy tails
+        m = BaselineModel(n_features=50, marginal=marginal_quantiles(heavy))
+        z = m.simulate(np.random.default_rng(7), 2000, 0.4, 0.0)
+        for thr in (2.0, 3.0):
+            self.assertAlmostEqual(float((np.abs(z) > thr).mean()), float((np.abs(heavy) > thr).mean()), delta=0.003)
+
+    def test_normal_marginal_matches_gaussian_model(self):
+        rng = np.random.default_rng(8)
+        m = BaselineModel(n_features=50, marginal=marginal_quantiles(rng.standard_normal(500000)))
+        z = m.simulate(np.random.default_rng(9), 2000, 0.4, 0.5)
+        self.assertAlmostEqual(float(z.std()), 1.0, delta=0.02)
+        self.assertAlmostEqual(float((np.abs(z) > 2).mean()), 0.0455, delta=0.004)
+
+    def test_mapping_is_monotone(self):
+        m = BaselineModel(n_features=3, marginal=[-1.0, 0.0, 5.0])
+        x = np.linspace(-4, 4, 101)
+        y = m._to_marginal(x)
+        self.assertTrue(np.all(np.diff(y) >= 0))
+        self.assertGreaterEqual(y.min(), -1.0)
+        self.assertLessEqual(y.max(), 5.0)
 
 
 class TestInference(unittest.TestCase):

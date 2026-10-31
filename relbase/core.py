@@ -6,8 +6,19 @@ Generative model (P features per person):
 C is a pattern shared by the whole group (drawn once per replicate), U_i an individual pattern,
 E_i measurement noise; s is the shared fraction and r the feature reliability (scalar or one per feature).
 C and U are drawn with the spatial correlation R_signal, E with R_noise (identity if not given).
+
+With `marginal` (observed deviation scores, or their quantiles), the Gaussian values (k = 1) are mapped
+through the normal CDF onto the empirical distribution, so that simulated extremes have the observed tail
+frequencies while the spatial and test-retest dependence of the Gaussian model is kept (Gaussian copula).
 """
+import math
+
 import numpy as np
+
+try:
+    from scipy.special import ndtr as _ndtr
+except ImportError:  # scipy is optional
+    _ndtr = np.vectorize(lambda x: 0.5 * (1.0 + math.erf(x / math.sqrt(2.0))), otypes=[float])
 
 DEFAULT_SEEDS = (42, 7, 123, 2024)
 DEFAULT_S_GRID = (0.0, 0.25, 0.5, 0.75, 1.0)
@@ -87,7 +98,14 @@ def estimate_inputs(z_full, z_half1, z_half2):
         "scale": float(z_full.std()),
         "reliability_half": rel_half,
         "reliability_full": spearman_brown(np.clip(rel_half, 0, 1), 2),
+        "marginal_quantiles": marginal_quantiles(z_full),
     }
+
+
+def marginal_quantiles(z, n=2001):
+    """Quantiles of pooled deviation scores at n evenly spaced probabilities (a compact, group-level marginal)."""
+    z = np.asarray(z, dtype=float).ravel()
+    return np.quantile(z[np.isfinite(z)], np.linspace(0, 1, n))
 
 
 def _cholesky(R, jitter):
@@ -98,7 +116,7 @@ def _cholesky(R, jitter):
 class BaselineModel:
     """Simulates deviation maps under the model above and summarizes their between-person overlap."""
 
-    def __init__(self, R_signal=None, R_noise=None, n_features=None, scale=1.0, threshold=2.0, jitter=1e-6):
+    def __init__(self, R_signal=None, R_noise=None, n_features=None, scale=1.0, threshold=2.0, jitter=1e-6, marginal=None):
         if R_signal is None and n_features is None:
             raise ValueError("give R_signal or n_features")
         self.P = int(np.asarray(R_signal).shape[0]) if R_signal is not None else int(n_features)
@@ -109,6 +127,18 @@ class BaselineModel:
                 raise ValueError("R_signal and R_noise must have the same size")
         self.scale = float(scale)
         self.threshold = float(threshold)
+        self.marginal = None
+        if marginal is not None:
+            m = np.sort(np.asarray(marginal, dtype=float).ravel())
+            self.marginal = m[np.isfinite(m)]
+            if len(self.marginal) < 3:
+                raise ValueError("marginal needs at least 3 values")
+
+    def _to_marginal(self, x):
+        """Map standard normal values onto the empirical marginal (linear interpolation between order statistics)."""
+        m = self.marginal
+        pos = _ndtr(x) * (len(m) - 1)
+        return np.interp(pos, np.arange(len(m)), m)
 
     def _draw(self, rng, L, m):
         x = rng.standard_normal((m, self.P))
@@ -126,7 +156,10 @@ class BaselineModel:
         s = float(shared_fraction)
         C = self._draw(rng, self.L_signal, 1)
         T = np.sqrt(s) * C + np.sqrt(1 - s) * self._draw(rng, self.L_signal, n)
-        return self.scale * (np.sqrt(r) * T + np.sqrt(1 - r) * self._draw(rng, self.L_noise, n))
+        latent = np.sqrt(r) * T + np.sqrt(1 - r) * self._draw(rng, self.L_noise, n)
+        if self.marginal is not None:
+            return self._to_marginal(latent)
+        return self.scale * latent
 
     def overlap_distribution(self, n, reliability, shared_fraction, metric="jaccard", reps=25, seed=42):
         f = METRICS[metric]

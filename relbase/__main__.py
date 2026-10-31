@@ -43,7 +43,13 @@ def load_model(args):
         sys.exit("give --reliability or --per-feature")
     if np.ndim(rel):
         rel = np.clip(rel, 0, 1)
-    model = BaselineModel(d["R_signal"], d["R_noise"], scale=args.scale if args.scale else float(d["scale"]), threshold=args.threshold)
+    marginal = None
+    if args.empirical_marginal:
+        if "marginal_quantiles" not in d.files:
+            sys.exit("--empirical-marginal needs inputs written by this version of `relbase estimate`")
+        marginal = d["marginal_quantiles"]
+    model = BaselineModel(d["R_signal"], d["R_noise"], scale=args.scale if args.scale else float(d["scale"]),
+                          threshold=args.threshold, marginal=marginal)
     return model, rel
 
 
@@ -63,6 +69,8 @@ def main(argv=None):
         p.add_argument("--metric", choices=sorted(METRICS), default="jaccard")
         p.add_argument("--threshold", type=float, default=2.0)
         p.add_argument("--scale", type=float, help="SD of observed z (default: from --inputs)")
+        p.add_argument("--empirical-marginal", action="store_true",
+                       help="map simulated values onto the reference marginal distribution (observed tails); --scale is then ignored")
         p.add_argument("--reps", type=int, default=25, help="replicates per seed")
         p.add_argument("--s-grid", type=float, nargs="+", default=list(DEFAULT_S_GRID))
     sub.choices["curve"].add_argument("--n", type=int, required=True)
