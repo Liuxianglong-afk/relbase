@@ -1,0 +1,16 @@
+{
+  "generated": "2026-10-31T10:12:43",
+  "script": "scripts/B11s_features_sensitivity.py",
+  "variant": "gordon",
+  "pass_column": "pass_fd20",
+  "fd": 0.2,
+  "atlas": "Gordon2014",
+  "split": "time",
+  "n_subjects": 985,
+  "n_parcels": 352,
+  "sec_half_median_iqr": [
+    171.0,
+    145.0,
+    198.0
+  ]
+}

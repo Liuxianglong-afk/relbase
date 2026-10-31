@@ -1,0 +1,16 @@
+{
+  "max_abs_diff_vs_naive": 6.661338147750939e-16,
+  "sim_true_0.5": 0.4999,
+  "sim_true_0.75": 0.7561,
+  "extreme_toy": {
+    "n_extreme_seg1": 2,
+    "n_extreme_seg2": 2,
+    "n_both_same_sign": 1,
+    "rate_extreme_seg1": 0.66667,
+    "rate_extreme_seg2": 0.66667,
+    "pos_agreement_mean_dir": 0.5,
+    "pos_agreement_symmetric": 0.5,
+    "kappa_3cat": 0.5
+  },
+  "pass": true
+}

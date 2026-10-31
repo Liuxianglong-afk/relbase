@@ -1,0 +1,42 @@
+{
+  "generated": "2026-10-31T10:16:22",
+  "script": "scripts/B18_tables_flow_figs.py",
+  "flow": {
+    "pheno": {
+      "abide1": 1112,
+      "abide2": 1007
+    },
+    "dcan_complete": {
+      "abide1": 844,
+      "abide2": 777
+    },
+    "excluded_by_reason": {
+      "remain_sec_fd20<240": 615,
+      "bad_parcels": 21
+    },
+    "qc_pass": {
+      "abide1": 532,
+      "abide2": 453
+    },
+    "small_site_excluded": 152,
+    "analysis": {
+      "abide1_ASD": 201,
+      "abide1_TC": 278,
+      "abide2_ASD": 135,
+      "abide2_TC": 219
+    },
+    "run_pairs_in_analysis": 108,
+    "no_complete_dcan": 498
+  },
+  "F6": {
+    "median_n_extreme_full": {
+      "TC": 19.0,
+      "ASD": 20.0
+    },
+    "median_n_reproduced": {
+      "TC": 1.0,
+      "ASD": 1.0
+    },
+    "share_extremes_reproduced_overall": 0.0833
+  }
+}

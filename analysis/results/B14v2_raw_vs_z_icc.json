@@ -1,0 +1,30 @@
+{
+  "generated": "2026-10-30T19:53:50",
+  "script": "scripts/B14v2_raw_vs_z_icc.py",
+  "results": {
+    "abide1_TC": {
+      "n": 278,
+      "raw": 0.3123,
+      "rawc_site_centered": 0.1963,
+      "zrc": 0.2094
+    },
+    "abide1_ASD": {
+      "n": 201,
+      "raw": 0.3346,
+      "rawc_site_centered": 0.1916,
+      "zrc": 0.2379
+    },
+    "abide2_TC": {
+      "n": 219,
+      "raw": 0.2828,
+      "rawc_site_centered": 0.2074,
+      "zrc": 0.2212
+    },
+    "abide2_ASD": {
+      "n": 135,
+      "raw": 0.2593,
+      "rawc_site_centered": 0.172,
+      "zrc": 0.1868
+    }
+  }
+}

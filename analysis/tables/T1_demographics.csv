@@ -1,0 +1,17 @@
+cohort,variable,ASD,TC,P
+ABIDE I,N,201,278,
+ABIDE I,"Age, y",13.4 ± 3.2,13.4 ± 3.3,0.980
+ABIDE I,"Male, n (%)",176 (88),219 (79),0.018
+ABIDE I,FIQ,104.9 ± 18.6,110.0 ± 12.2,0.001
+ABIDE I,"Mean FD of retained frames, mm",0.086 ± 0.018,0.085 ± 0.018,0.705
+ABIDE I,"Retained time, s",358 ± 96,378 ± 98,0.031
+ABIDE I,ADOS CSS (n),7.0 ± 2.1 (136),1.2 ± 0.6 (11),
+ABIDE I,SRS raw total (n),92.5 ± 28.8 (89),20.0 ± 15.1 (108),
+ABIDE II,N,135,219,
+ABIDE II,"Age, y",12.0 ± 3.5,11.1 ± 2.7,0.022
+ABIDE II,"Male, n (%)",111 (82),136 (62),<.001
+ABIDE II,FIQ,103.2 ± 17.4,115.5 ± 11.6,<.001
+ABIDE II,"Mean FD of retained frames, mm",0.088 ± 0.016,0.084 ± 0.018,0.042
+ABIDE II,"Retained time, s",402 ± 171,426 ± 190,0.230
+ABIDE II,ADOS CSS (n),7.1 ± 1.8 (101),1.0 ± 0.0 (2),
+ABIDE II,SRS raw total (n),93.4 ± 29.8 (115),19.3 ± 13.8 (193),

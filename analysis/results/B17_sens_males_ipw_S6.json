@@ -1,0 +1,183 @@
+{
+  "generated": "2026-10-31T09:57:20",
+  "script": "scripts/B17_sens_males_ipw_S6.py",
+  "selfcheck_weighted_icc_max_abs_diff": 0.0,
+  "males_only": {
+    "ABIDE_I_TC": {
+      "n": 219,
+      "median_icc": 0.1969,
+      "ci95_mean_over_seeds": [
+        0.1734,
+        0.2198
+      ],
+      "extreme": {
+        "n_extreme_seg1": 5467,
+        "n_extreme_seg2": 5402,
+        "n_both_same_sign": 407,
+        "rate_extreme_seg1": 0.06587,
+        "rate_extreme_seg2": 0.06508,
+        "pos_agreement_mean_dir": 0.0749,
+        "pos_agreement_symmetric": 0.0749,
+        "kappa_3cat": 0.0341
+      }
+    },
+    "ABIDE_I_ASD": {
+      "n": 176,
+      "median_icc": 0.2206,
+      "ci95_mean_over_seeds": [
+        0.1984,
+        0.25
+      ],
+      "extreme": {
+        "n_extreme_seg1": 4343,
+        "n_extreme_seg2": 3906,
+        "n_both_same_sign": 351,
+        "rate_extreme_seg1": 0.06511,
+        "rate_extreme_seg2": 0.05856,
+        "pos_agreement_mean_dir": 0.0853,
+        "pos_agreement_symmetric": 0.0851,
+        "kappa_3cat": 0.0482
+      }
+    },
+    "ABIDE_II_TC": {
+      "n": 136,
+      "median_icc": 0.2197,
+      "ci95_mean_over_seeds": [
+        0.1931,
+        0.2414
+      ],
+      "extreme": {
+        "n_extreme_seg1": 3018,
+        "n_extreme_seg2": 3295,
+        "n_both_same_sign": 258,
+        "rate_extreme_seg1": 0.05855,
+        "rate_extreme_seg2": 0.06393,
+        "pos_agreement_mean_dir": 0.0819,
+        "pos_agreement_symmetric": 0.0817,
+        "kappa_3cat": 0.0413
+      }
+    },
+    "ABIDE_II_ASD": {
+      "n": 111,
+      "median_icc": 0.1885,
+      "ci95_mean_over_seeds": [
+        0.1499,
+        0.2189
+      ],
+      "extreme": {
+        "n_extreme_seg1": 2950,
+        "n_extreme_seg2": 2933,
+        "n_both_same_sign": 199,
+        "rate_extreme_seg1": 0.07012,
+        "rate_extreme_seg2": 0.06972,
+        "pos_agreement_mean_dir": 0.0677,
+        "pos_agreement_symmetric": 0.0677,
+        "kappa_3cat": 0.0258
+      }
+    }
+  },
+  "ipw": {
+    "n_population": 1277,
+    "n_included": 833,
+    "or_asd_inclusion": 0.48,
+    "p_asd": 1.388240506571924e-07,
+    "weight_range_after_trunc": [
+      0.663,
+      2.379
+    ],
+    "results": {
+      "ABIDE_I_TC": {
+        "n": 278,
+        "median_icc": 0.2096,
+        "ci95_mean_over_seeds": [
+          0.1844,
+          0.2279
+        ],
+        "extreme": "未加权，见主分析"
+      },
+      "ABIDE_I_ASD": {
+        "n": 201,
+        "median_icc": 0.2313,
+        "ci95_mean_over_seeds": [
+          0.2043,
+          0.2619
+        ],
+        "extreme": "未加权，见主分析"
+      },
+      "ABIDE_II_TC": {
+        "n": 219,
+        "median_icc": 0.2199,
+        "ci95_mean_over_seeds": [
+          0.191,
+          0.2372
+        ],
+        "extreme": "未加权，见主分析"
+      },
+      "ABIDE_II_ASD": {
+        "n": 135,
+        "median_icc": 0.1663,
+        "ci95_mean_over_seeds": [
+          0.1378,
+          0.2062
+        ],
+        "extreme": "未加权，见主分析"
+      }
+    }
+  },
+  "S6": {
+    "deviation": "P1 无 ICC ≥ 0.5 的分区；改为两个全脑指标 + 逐分区探索（BH-FDR）",
+    "n_asd": 336,
+    "results": {
+      "ados_css": {
+        "n": 237,
+        "descriptive_only_lt100": false,
+        "n_ext": {
+          "std_beta": -0.0417,
+          "ci95": [
+            -0.162,
+            0.0787
+          ],
+          "p": 0.495744753388502
+        },
+        "mean_abs_z": {
+          "std_beta": -0.0545,
+          "ci95": [
+            -0.1762,
+            0.0671
+          ],
+          "p": 0.3779851231544742
+        },
+        "parcelwise": {
+          "n_q_lt_0.05": 0,
+          "min_q": 0.9968,
+          "max_abs_rho": 0.174
+        }
+      },
+      "srs_raw_total": {
+        "n": 204,
+        "descriptive_only_lt100": false,
+        "n_ext": {
+          "std_beta": 0.0266,
+          "ci95": [
+            -0.1062,
+            0.1595
+          ],
+          "p": 0.6928513782165421
+        },
+        "mean_abs_z": {
+          "std_beta": 0.0104,
+          "ci95": [
+            -0.1254,
+            0.1463
+          ],
+          "p": 0.8797247284069549
+        },
+        "parcelwise": {
+          "n_q_lt_0.05": 0,
+          "min_q": 0.9893,
+          "max_abs_rho": 0.1776
+        }
+      }
+    }
+  }
+}

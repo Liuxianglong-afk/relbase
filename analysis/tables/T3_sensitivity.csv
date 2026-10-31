@@ -1,0 +1,29 @@
+Analysis,Cohort,Group,n,Median ICC (95% CI),"Extreme positive agreement, %",ASD − TC (P)
+Primary analysis,ABIDE I,TC,278,0.209 (0.188–0.231),7.9,
+Primary analysis,ABIDE I,ASD,201,0.238 (0.211–0.266),9.9,+0.029 (0.087)
+Primary analysis,ABIDE II,TC,219,0.221 (0.195–0.241),8.4,
+Primary analysis,ABIDE II,ASD,135,0.187 (0.156–0.219),7.1,-0.034 (0.136)
+FD threshold 0.3 mm,ABIDE I,TC,356,0.221 (0.201–0.239),8.6,
+FD threshold 0.3 mm,ABIDE I,ASD,281,0.225 (0.202–0.250),9.2,+0.004 (0.811)
+FD threshold 0.3 mm,ABIDE II,TC,301,0.210 (0.195–0.236),9.1,
+FD threshold 0.3 mm,ABIDE II,ASD,202,0.179 (0.150–0.205),7.5,-0.032 (0.098)
+Odd/even frame split,ABIDE I,TC,278,0.986 (0.984–0.988),85.6,
+Odd/even frame split,ABIDE I,ASD,201,0.985 (0.983–0.987),85.0,-0.001 (0.320)
+Odd/even frame split,ABIDE II,TC,219,0.983 (0.981–0.985),84.8,
+Odd/even frame split,ABIDE II,ASD,135,0.983 (0.981–0.986),85.1,-0.000 (0.956)
+Gordon333 atlas,ABIDE I,TC,278,0.193 (0.171–0.212),7.9,
+Gordon333 atlas,ABIDE I,ASD,201,0.225 (0.192–0.249),8.4,+0.032 (0.058)
+Gordon333 atlas,ABIDE II,TC,219,0.200 (0.178–0.222),7.7,
+Gordon333 atlas,ABIDE II,ASD,135,0.167 (0.139–0.200),7.6,-0.033 (0.133)
+ComBat-GAM instead of site recentring,ABIDE I,TC,278,0.220 (0.196–0.239),7.0,
+ComBat-GAM instead of site recentring,ABIDE I,ASD,201,0.243 (0.216–0.272),10.4,+0.023 (0.185)
+ComBat-GAM instead of site recentring,ABIDE II,TC,219,0.227 (0.202–0.248),7.9,
+ComBat-GAM instead of site recentring,ABIDE II,ASD,135,0.203 (0.165–0.231),7.9,-0.024 (0.255)
+Inverse-probability weighting,ABIDE I,TC,278,0.210 (0.184–0.228),,
+Inverse-probability weighting,ABIDE I,ASD,201,0.231 (0.204–0.262),,
+Inverse-probability weighting,ABIDE II,TC,219,0.220 (0.191–0.237),,
+Inverse-probability weighting,ABIDE II,ASD,135,0.166 (0.138–0.206),,
+Males only,ABIDE I,TC,219,0.197 (0.173–0.220),7.5,
+Males only,ABIDE I,ASD,176,0.221 (0.198–0.250),8.5,
+Males only,ABIDE II,TC,136,0.220 (0.193–0.241),8.2,
+Males only,ABIDE II,ASD,111,0.189 (0.150–0.219),6.8,

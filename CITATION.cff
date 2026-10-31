@@ -1,0 +1,23 @@
+# Read by GitHub ("Cite this repository") and by Zenodo when a release is archived.
+# Add the DOI after Zenodo assigns it.
+cff-version: 1.2.0
+message: "If you use relbase, please cite the software and the accompanying article."
+title: "relbase: reliability-matched baselines for between-person overlap of extreme normative deviations"
+type: software
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/Liuxianglong-afk/relbase"
+authors:
+  - family-names: "Liu"
+    given-names: "Xianglong"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   (add when available)
+    # affiliation: ""                                   (add when available)
+keywords:
+  - normative modelling
+  - reliability
+  - functional connectivity
+  - heterogeneity
+  - autism
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.<record>"

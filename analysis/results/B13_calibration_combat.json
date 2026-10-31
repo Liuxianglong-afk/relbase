@@ -1,0 +1,116 @@
+{
+  "generated": "2026-10-31T13:35:26",
+  "script": "scripts/B13_site_recenter_calibration.py",
+  "min_local_tc": 10,
+  "sites_ok": [
+    "ABIDEII-GU_1",
+    "ABIDEII-IP_1",
+    "ABIDEII-KKI_1",
+    "ABIDEII-NYU_1",
+    "ABIDEII-OHSU_1",
+    "ABIDEII-SDSU_1",
+    "ABIDEII-TCD_1",
+    "KKI",
+    "Leuven_2",
+    "NYU",
+    "OHSU",
+    "SDSU",
+    "Stanford",
+    "Trinity",
+    "UCLA_1",
+    "UM_1",
+    "UM_2",
+    "USM",
+    "Yale"
+  ],
+  "sites_excluded_lt10_tc": {
+    "ABIDEII-BNI_1": 1,
+    "ABIDEII-EMC_1": 8,
+    "ABIDEII-IU_1": 6,
+    "ABIDEII-ONRC_2": 7,
+    "ABIDEII-UCD_1": 9,
+    "ABIDEII-USM_1": 4,
+    "CMU_a": 1,
+    "CMU_b": 1,
+    "Caltech": 5,
+    "Leuven_1": 2,
+    "MaxMun_a": 1,
+    "MaxMun_d": 4,
+    "Olin": 2,
+    "Pitt": 4,
+    "UCLA_2": 9
+  },
+  "n_subjects_in_excluded_sites": 152,
+  "calibration": {
+    "strength_full": {
+      "n_tc": 497,
+      "n_features": 379,
+      "median_over_features": {
+        "mean": -0.0009,
+        "sd": 1.0261,
+        "cover90": 0.8913,
+        "ext2": 0.0523
+      },
+      "range_mean": [
+        -0.02,
+        0.014
+      ],
+      "range_sd": [
+        1.012,
+        1.064
+      ],
+      "raw_z_tc_median_sd": 1.0261,
+      "per_site_sd_range": [
+        0.975,
+        1.051
+      ]
+    },
+    "strength_half1": {
+      "n_tc": 497,
+      "n_features": 379,
+      "median_over_features": {
+        "mean": -0.0015,
+        "sd": 1.0265,
+        "cover90": 0.8913,
+        "ext2": 0.0523
+      },
+      "range_mean": [
+        -0.014,
+        0.011
+      ],
+      "range_sd": [
+        1.009,
+        1.064
+      ],
+      "raw_z_tc_median_sd": 1.0265,
+      "per_site_sd_range": [
+        0.989,
+        1.051
+      ]
+    },
+    "strength_half2": {
+      "n_tc": 497,
+      "n_features": 379,
+      "median_over_features": {
+        "mean": -0.0009,
+        "sd": 1.0256,
+        "cover90": 0.8913,
+        "ext2": 0.0523
+      },
+      "range_mean": [
+        -0.013,
+        0.016
+      ],
+      "range_sd": [
+        1.011,
+        1.051
+      ],
+      "raw_z_tc_median_sd": 1.0256,
+      "per_site_sd_range": [
+        0.981,
+        1.046
+      ]
+    }
+  },
+  "variant": "combat"
+}

@@ -1,0 +1,15 @@
+{
+ "frozen_at": "2026-10-30T18:22:19",
+ "note": "B1 v1.0 冻结时，B12 常模全量运行中，尚无 ASD 结果文件（B13/B14 未运行）",
+ "files": {
+  "protocol_B1_常模偏离_多尺度解释.md": {
+   "sha256": "ca187995eeda63950ff7f6382052a0bcb314269eeb8e30064cb5612b554eef72",
+   "bytes": 9980
+  },
+  "protocol_B_rsfMRI共用流程.md": {
+   "sha256": "e5bc89112dce1f80c7508ec03f43efbcf4711f3269c920f0c31b35cc7fae9533",
+   "bytes": 13594
+  }
+ },
+ "asd_result_files_present": []
+}

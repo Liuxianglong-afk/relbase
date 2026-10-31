@@ -1,0 +1,116 @@
+{
+  "generated": "2026-10-31T12:45:52",
+  "script": "scripts/B13_site_recenter_calibration.py",
+  "min_local_tc": 10,
+  "sites_ok": [
+    "ABIDEII-GU_1",
+    "ABIDEII-IP_1",
+    "ABIDEII-KKI_1",
+    "ABIDEII-NYU_1",
+    "ABIDEII-OHSU_1",
+    "ABIDEII-SDSU_1",
+    "ABIDEII-TCD_1",
+    "KKI",
+    "Leuven_2",
+    "NYU",
+    "OHSU",
+    "SDSU",
+    "Stanford",
+    "Trinity",
+    "UCLA_1",
+    "UM_1",
+    "UM_2",
+    "USM",
+    "Yale"
+  ],
+  "sites_excluded_lt10_tc": {
+    "ABIDEII-BNI_1": 1,
+    "ABIDEII-EMC_1": 8,
+    "ABIDEII-IU_1": 6,
+    "ABIDEII-ONRC_2": 7,
+    "ABIDEII-UCD_1": 9,
+    "ABIDEII-USM_1": 4,
+    "CMU_a": 1,
+    "CMU_b": 1,
+    "Caltech": 5,
+    "Leuven_1": 2,
+    "MaxMun_a": 1,
+    "MaxMun_d": 4,
+    "Olin": 2,
+    "Pitt": 4,
+    "UCLA_2": 9
+  },
+  "n_subjects_in_excluded_sites": 152,
+  "calibration": {
+    "strength_full": {
+      "n_tc": 497,
+      "n_features": 352,
+      "median_over_features": {
+        "mean": 0.0001,
+        "sd": 1.0758,
+        "cover90": 0.8793,
+        "ext2": 0.0644
+      },
+      "range_mean": [
+        -0.011,
+        0.012
+      ],
+      "range_sd": [
+        1.058,
+        1.128
+      ],
+      "raw_z_tc_median_sd": 1.0224,
+      "per_site_sd_range": [
+        1.019,
+        1.254
+      ]
+    },
+    "strength_half1": {
+      "n_tc": 497,
+      "n_features": 352,
+      "median_over_features": {
+        "mean": 0.0013,
+        "sd": 1.0745,
+        "cover90": 0.8813,
+        "ext2": 0.0624
+      },
+      "range_mean": [
+        -0.01,
+        0.018
+      ],
+      "range_sd": [
+        1.058,
+        1.131
+      ],
+      "raw_z_tc_median_sd": 1.0218,
+      "per_site_sd_range": [
+        1.019,
+        1.258
+      ]
+    },
+    "strength_half2": {
+      "n_tc": 497,
+      "n_features": 352,
+      "median_over_features": {
+        "mean": 0.0003,
+        "sd": 1.0747,
+        "cover90": 0.8793,
+        "ext2": 0.0644
+      },
+      "range_mean": [
+        -0.014,
+        0.012
+      ],
+      "range_sd": [
+        1.057,
+        1.114
+      ],
+      "raw_z_tc_median_sd": 1.0214,
+      "per_site_sd_range": [
+        1.019,
+        1.255
+      ]
+    }
+  },
+  "variant": "gordon"
+}

@@ -1,0 +1,43 @@
+{
+  "script": "scripts/B02v_verify_fc.py",
+  "seed": 42,
+  "n": 5,
+  "all_pass": true,
+  "detail": [
+    {
+      "cohort": "abide2",
+      "kept_frames": 98,
+      "qc_remain_frames": 98,
+      "max_abs_diff": 5.856557394601225e-08,
+      "pass": true
+    },
+    {
+      "cohort": "abide1",
+      "kept_frames": 291,
+      "qc_remain_frames": 291,
+      "max_abs_diff": 5.9228848048320515e-08,
+      "pass": true
+    },
+    {
+      "cohort": "abide2",
+      "kept_frames": 164,
+      "qc_remain_frames": 164,
+      "max_abs_diff": 5.884774068043441e-08,
+      "pass": true
+    },
+    {
+      "cohort": "abide1",
+      "kept_frames": 281,
+      "qc_remain_frames": 281,
+      "max_abs_diff": 5.9514070116506446e-08,
+      "pass": true
+    },
+    {
+      "cohort": "abide1",
+      "kept_frames": 188,
+      "qc_remain_frames": 188,
+      "max_abs_diff": 5.931932411940011e-08,
+      "pass": true
+    }
+  ]
+}

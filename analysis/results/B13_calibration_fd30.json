@@ -1,0 +1,117 @@
+{
+  "generated": "2026-10-31T11:06:10",
+  "script": "scripts/B13_site_recenter_calibration.py",
+  "min_local_tc": 10,
+  "sites_ok": [
+    "ABIDEII-EMC_1",
+    "ABIDEII-GU_1",
+    "ABIDEII-IP_1",
+    "ABIDEII-KKI_1",
+    "ABIDEII-NYU_1",
+    "ABIDEII-OHSU_1",
+    "ABIDEII-SDSU_1",
+    "ABIDEII-TCD_1",
+    "ABIDEII-UCD_1",
+    "KKI",
+    "Leuven_2",
+    "NYU",
+    "OHSU",
+    "Pitt",
+    "SDSU",
+    "Stanford",
+    "Trinity",
+    "UCLA_1",
+    "UCLA_2",
+    "UM_1",
+    "UM_2",
+    "USM",
+    "Yale"
+  ],
+  "sites_excluded_lt10_tc": {
+    "ABIDEII-BNI_1": 3,
+    "ABIDEII-IU_1": 8,
+    "ABIDEII-ONRC_2": 9,
+    "ABIDEII-USM_1": 5,
+    "CMU_a": 1,
+    "CMU_b": 1,
+    "Caltech": 6,
+    "Leuven_1": 2,
+    "MaxMun_a": 1,
+    "MaxMun_d": 4,
+    "Olin": 8,
+    "SBL": 1
+  },
+  "n_subjects_in_excluded_sites": 138,
+  "calibration": {
+    "strength_full": {
+      "n_tc": 657,
+      "n_features": 379,
+      "median_over_features": {
+        "mean": 0.0,
+        "sd": 1.066,
+        "cover90": 0.8813,
+        "ext2": 0.0624
+      },
+      "range_mean": [
+        -0.008,
+        0.009
+      ],
+      "range_sd": [
+        1.053,
+        1.093
+      ],
+      "raw_z_tc_median_sd": 1.0165,
+      "per_site_sd_range": [
+        1.014,
+        1.215
+      ]
+    },
+    "strength_half1": {
+      "n_tc": 657,
+      "n_features": 379,
+      "median_over_features": {
+        "mean": 0.0,
+        "sd": 1.0659,
+        "cover90": 0.8813,
+        "ext2": 0.0624
+      },
+      "range_mean": [
+        -0.008,
+        0.011
+      ],
+      "range_sd": [
+        1.053,
+        1.111
+      ],
+      "raw_z_tc_median_sd": 1.0159,
+      "per_site_sd_range": [
+        1.015,
+        1.233
+      ]
+    },
+    "strength_half2": {
+      "n_tc": 657,
+      "n_features": 379,
+      "median_over_features": {
+        "mean": 0.0001,
+        "sd": 1.0657,
+        "cover90": 0.8798,
+        "ext2": 0.0624
+      },
+      "range_mean": [
+        -0.008,
+        0.011
+      ],
+      "range_sd": [
+        1.055,
+        1.107
+      ],
+      "raw_z_tc_median_sd": 1.0155,
+      "per_site_sd_range": [
+        1.014,
+        1.197
+      ]
+    }
+  },
+  "variant": "fd30"
+}

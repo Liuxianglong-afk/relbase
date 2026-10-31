@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv*/
+# never commit participant-level data
+*.csv
+*.csv.gz
+*LOCAL_ONLY*
+!analysis/tables/*.csv

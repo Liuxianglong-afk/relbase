@@ -1,0 +1,302 @@
+{
+  "generated": "2026-10-31T00:41:34",
+  "script": "scripts/B15_secondary_S2_S4_S5.py",
+  "S2": {
+    "n": 833,
+    "r_half_median_by_cohort_group": {
+      "abide1_ASD": 0.1964,
+      "abide1_TC": 0.1883,
+      "abide2_ASD": 0.1786,
+      "abide2_TC": 0.1971
+    },
+    "spearman_r_vs_sec": {
+      "rho": 0.1527,
+      "p": 9.541558899656126e-06
+    },
+    "quintiles": {
+      "(119.999, 142.5]": {
+        "median_sec": 130.0,
+        "median_r_half": 0.1731,
+        "n": 169
+      },
+      "(142.5, 164.8]": {
+        "median_sec": 152.5,
+        "median_r_half": 0.1851,
+        "n": 164
+      },
+      "(164.8, 176.0]": {
+        "median_sec": 173.2,
+        "median_r_half": 0.1752,
+        "n": 182
+      },
+      "(176.0, 239.2]": {
+        "median_sec": 194.0,
+        "median_r_half": 0.1856,
+        "n": 151
+      },
+      "(239.2, 442.5]": {
+        "median_sec": 292.0,
+        "median_r_half": 0.2406,
+        "n": 167
+      }
+    },
+    "gam": {
+      "pred_grid_sec": [
+        122.0,
+        158.9,
+        195.7,
+        232.6,
+        269.4,
+        306.3,
+        343.1,
+        380.0,
+        416.8
+      ],
+      "pred_r_half_abide1_TC": [
+        0.1655,
+        0.1813,
+        0.1898,
+        0.2075,
+        0.2282,
+        0.2474,
+        0.2605,
+        0.2629,
+        0.2502
+      ],
+      "coef_group_TC_vs_ASD": -0.004,
+      "p_group": 0.6392389452711993
+    },
+    "spearman_brown": {
+      "ABIDE_I_TC": {
+        "half_sec_median": 175.5,
+        "icc_half": 0.2094,
+        "pred_icc_full_2L": 0.3463,
+        "sec_needed_icc_0.5": 663.0,
+        "sec_needed_icc_0.5_range_from_ci": [
+          585.0,
+          757.0
+        ],
+        "sec_needed_icc_0.75": 1988.0,
+        "sec_needed_icc_0.75_range_from_ci": [
+          1754.0,
+          2271.0
+        ]
+      },
+      "ABIDE_I_ASD": {
+        "half_sec_median": 170.0,
+        "icc_half": 0.2379,
+        "pred_icc_full_2L": 0.3844,
+        "sec_needed_icc_0.5": 545.0,
+        "sec_needed_icc_0.5_range_from_ci": [
+          470.0,
+          635.0
+        ],
+        "sec_needed_icc_0.75": 1634.0,
+        "sec_needed_icc_0.75_range_from_ci": [
+          1411.0,
+          1906.0
+        ]
+      },
+      "ABIDE_II_TC": {
+        "half_sec_median": 172.5,
+        "icc_half": 0.2212,
+        "pred_icc_full_2L": 0.3623,
+        "sec_needed_icc_0.5": 607.0,
+        "sec_needed_icc_0.5_range_from_ci": [
+          542.0,
+          712.0
+        ],
+        "sec_needed_icc_0.75": 1822.0,
+        "sec_needed_icc_0.75_range_from_ci": [
+          1626.0,
+          2136.0
+        ]
+      },
+      "ABIDE_II_ASD": {
+        "half_sec_median": 170.0,
+        "icc_half": 0.1868,
+        "pred_icc_full_2L": 0.3148,
+        "sec_needed_icc_0.5": 740.0,
+        "sec_needed_icc_0.5_range_from_ci": [
+          605.0,
+          918.0
+        ],
+        "sec_needed_icc_0.75": 2220.0,
+        "sec_needed_icc_0.75_range_from_ci": [
+          1816.0,
+          2755.0
+        ]
+      }
+    }
+  },
+  "S4": {
+    "deviation": "P1 无分区 ICC ≥ 0.5，改为全部皮层分区 + 被试层面衰减校正（protocol_B1 第 12 节）",
+    "n_parcels": 360,
+    "n_subjects": 833,
+    "n_not_corrected_rel_lt_0.1": 106,
+    "by_cohort": {
+      "abide1": {
+        "ASD": {
+          "n": 201,
+          "median_rho": 0.0171,
+          "iqr_rho": [
+            -0.0346,
+            0.057
+          ],
+          "median_rho_corrected": 0.0306,
+          "median_rel_full_sb": 0.3283
+        },
+        "TC": {
+          "n": 278,
+          "median_rho": 0.0074,
+          "iqr_rho": [
+            -0.0482,
+            0.0559
+          ],
+          "median_rho_corrected": 0.0057,
+          "median_rel_full_sb": 0.317
+        },
+        "ols_ASD_minus_TC": {
+          "beta": 0.0045,
+          "ci95": [
+            -0.0092,
+            0.0182
+          ],
+          "p": 0.52161053608567
+        }
+      },
+      "abide2": {
+        "ASD": {
+          "n": 135,
+          "median_rho": 0.0165,
+          "iqr_rho": [
+            -0.0426,
+            0.06
+          ],
+          "median_rho_corrected": 0.0236,
+          "median_rel_full_sb": 0.3031
+        },
+        "TC": {
+          "n": 219,
+          "median_rho": 0.0223,
+          "iqr_rho": [
+            -0.0328,
+            0.0661
+          ],
+          "median_rho_corrected": 0.038,
+          "median_rel_full_sb": 0.3293
+        },
+        "ols_ASD_minus_TC": {
+          "beta": -0.0189,
+          "ci95": [
+            -0.0356,
+            -0.0021
+          ],
+          "p": 0.02732923804154814
+        }
+      }
+    }
+  },
+  "S5": {
+    "abide1": {
+      "a_full_all_extremes": {
+        "ASD": {
+          "n": 201,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 20100,
+          "share_subjects_no_extreme": 0.0,
+          "median_n_extremes": 20.0
+        },
+        "TC": {
+          "n": 278,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 38503,
+          "share_subjects_no_extreme": 0.0,
+          "median_n_extremes": 18.0
+        },
+        "ASD_minus_TC": 0.0,
+        "perm_p_two_sided": 1.0,
+        "posthoc_mean_jaccard": {
+          "ASD": 0.0163,
+          "TC": 0.0134,
+          "ASD_minus_TC": 0.0029,
+          "perm_p_two_sided": 0.0006
+        }
+      },
+      "b_reproducible_both_halves": {
+        "ASD": {
+          "n": 201,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 18447,
+          "share_subjects_no_extreme": 0.2886,
+          "median_n_extremes": 1.0
+        },
+        "TC": {
+          "n": 278,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 33750,
+          "share_subjects_no_extreme": 0.3525,
+          "median_n_extremes": 1.0
+        },
+        "ASD_minus_TC": 0.0,
+        "perm_p_two_sided": 1.0,
+        "posthoc_mean_jaccard": {
+          "ASD": 0.0015,
+          "TC": 0.0008,
+          "ASD_minus_TC": 0.0006,
+          "perm_p_two_sided": 0.002
+        }
+      }
+    },
+    "abide2": {
+      "a_full_all_extremes": {
+        "ASD": {
+          "n": 135,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 9045,
+          "share_subjects_no_extreme": 0.0,
+          "median_n_extremes": 19.0
+        },
+        "TC": {
+          "n": 219,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 23871,
+          "share_subjects_no_extreme": 0.0,
+          "median_n_extremes": 19.0
+        },
+        "ASD_minus_TC": 0.0,
+        "perm_p_two_sided": 1.0,
+        "posthoc_mean_jaccard": {
+          "ASD": 0.0179,
+          "TC": 0.0129,
+          "ASD_minus_TC": 0.0049,
+          "perm_p_two_sided": 0.0013
+        }
+      },
+      "b_reproducible_both_halves": {
+        "ASD": {
+          "n": 135,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 7614,
+          "share_subjects_no_extreme": 0.4,
+          "median_n_extremes": 1.0
+        },
+        "TC": {
+          "n": 219,
+          "median_jaccard": 0.0,
+          "n_valid_pairs": 21170,
+          "share_subjects_no_extreme": 0.3379,
+          "median_n_extremes": 1.0
+        },
+        "ASD_minus_TC": 0.0,
+        "perm_p_two_sided": 1.0,
+        "posthoc_mean_jaccard": {
+          "ASD": 0.0014,
+          "TC": 0.0009,
+          "ASD_minus_TC": 0.0005,
+          "perm_p_two_sided": 0.20698
+        }
+      }
+    }
+  }
+}

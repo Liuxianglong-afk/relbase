@@ -1,0 +1,13 @@
+Analysis,Cohort,Group,n,Median ICC (95% CI),IQR,"Features ICC ≥ 0.5, %","Extreme positive agreement, %",κ (3-category),ASD − TC (P)
+"Parcel FC strength, split-half (P1/P2)",ABIDE I,TC,278,0.209 (0.188–0.231),0.169–0.250,0.0,7.9,0.037,
+"Parcel FC strength, split-half (P1/P2)",ABIDE I,ASD,201,0.238 (0.211–0.266),0.183–0.290,0.0,9.9,0.062,+0.029 (0.087)
+"Parcel FC strength, split-half (P1/P2)",ABIDE II,TC,219,0.221 (0.195–0.241),0.166–0.267,0.0,8.4,0.043,
+"Parcel FC strength, split-half (P1/P2)",ABIDE II,ASD,135,0.187 (0.156–0.219),0.132–0.246,0.0,7.1,0.028,-0.034 (0.136)
+"Parcel FC strength, between-run (S1)",Pooled,TC,65,0.246 (0.196–0.291),0.152–0.338,1.6,20.8,0.130,
+"Parcel FC strength, between-run (S1)",Pooled,ASD,43,0.231 (0.168–0.293),0.138–0.333,2.6,20.7,0.139,-0.015 (0.733)
+"Network FC, split-half (S3)",ABIDE I,TC,278,0.283 (0.267–0.320),0.238–0.372,1.1,10.9,0.070,
+"Network FC, split-half (S3)",ABIDE I,ASD,201,0.304 (0.274–0.332),0.252–0.358,2.2,12.9,0.093,+0.020 (0.319)
+"Network FC, split-half (S3)",ABIDE II,TC,219,0.285 (0.263–0.322),0.216–0.367,2.2,11.9,0.081,
+"Network FC, split-half (S3)",ABIDE II,ASD,135,0.289 (0.249–0.320),0.193–0.360,2.2,11.8,0.077,+0.004 (0.858)
+"Network FC, between-run (S3)",Pooled,TC,65,0.291 (0.236–0.337),0.198–0.363,7.7,18.8,0.132,
+"Network FC, between-run (S3)",Pooled,ASD,43,0.269 (0.200–0.335),0.152–0.384,6.6,21.3,0.167,-0.022 (0.616)

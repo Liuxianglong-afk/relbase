@@ -1,0 +1,47 @@
+{
+  "generated": "2026-10-31T14:40:37",
+  "script": "scripts/B22_s5_site_pairs.py",
+  "nperm": 10000,
+  "results": {
+    "abide1": {
+      "all_pairs": {
+        "ASD": 0.01633,
+        "TC": 0.0134,
+        "ASD_minus_TC": 0.00293,
+        "perm_p_two_sided": 0.0006
+      },
+      "same_site_pairs": {
+        "ASD": 0.02552,
+        "TC": 0.00733,
+        "ASD_minus_TC": 0.01819,
+        "perm_p_two_sided": 0.0001
+      },
+      "between_site_pairs": {
+        "ASD": 0.01516,
+        "TC": 0.01425,
+        "ASD_minus_TC": 0.0009,
+        "perm_p_two_sided": 0.26607
+      }
+    },
+    "abide2": {
+      "all_pairs": {
+        "ASD": 0.01788,
+        "TC": 0.01294,
+        "ASD_minus_TC": 0.00495,
+        "perm_p_two_sided": 0.0013
+      },
+      "same_site_pairs": {
+        "ASD": 0.02693,
+        "TC": 0.0089,
+        "ASD_minus_TC": 0.01803,
+        "perm_p_two_sided": 0.0001
+      },
+      "between_site_pairs": {
+        "ASD": 0.01604,
+        "TC": 0.01424,
+        "ASD_minus_TC": 0.0018,
+        "perm_p_two_sided": 0.31117
+      }
+    }
+  }
+}

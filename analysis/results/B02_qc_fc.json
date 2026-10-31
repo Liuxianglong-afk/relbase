@@ -1,0 +1,97 @@
+{
+  "generated": "2026-10-30T17:26:35",
+  "script": "scripts/B02_qc_fc.py",
+  "n_complete_dcan": 1621,
+  "rate_remain240_fd20_all": 0.6076,
+  "min_sec_rule_result": 240,
+  "n_exclude_by_reason": {
+    "none": 985,
+    "remain_sec_fd20<240": 615,
+    "bad_parcels": 21
+  },
+  "pass_fd20_by_cohort_dx": {
+    "abide1_dx1": 225,
+    "abide1_dx2": 307,
+    "abide2_dx1": 199,
+    "abide2_dx2": 254
+  },
+  "pass_fd30_n": 1278,
+  "tr_values": {
+    "2.0": 896,
+    "2.5": 396,
+    "3.0": 134,
+    "1.5": 77,
+    "2.7": 33,
+    "1.651": 23,
+    "0.475": 21,
+    "0.813": 17,
+    "1.652": 7,
+    "1.666": 7,
+    "1.667": 5,
+    "1.65": 2,
+    "1.665": 1,
+    "1.67": 1,
+    "2.2": 1
+  },
+  "meanfd_retained_fd20_by_dx_passed": {
+    "1": [
+      0.0873,
+      0.0173
+    ],
+    "2": [
+      0.0849,
+      0.0183
+    ]
+  },
+  "remain_sec_fd20_by_dx_passed": {
+    "1": [
+      369.3,
+      131.3
+    ],
+    "2": [
+      393.9,
+      148.1
+    ]
+  },
+  "fc_outputs": {
+    "glasser_fd20": {
+      "n_subjects": 1334,
+      "n_parcels": 379
+    },
+    "glasser_fd30": {
+      "n_subjects": 1510,
+      "n_parcels": 379
+    },
+    "gordon_fd20": {
+      "n_subjects": 1334,
+      "n_parcels": 352
+    },
+    "gordon_fd30": {
+      "n_subjects": 1510,
+      "n_parcels": 352
+    }
+  },
+  "precheck_TC_meanFC_cross_cohort": {
+    "glasser_fd20": {
+      "r_TC_meanFC_abide1_vs_abide2": 0.9865,
+      "n_TC_abide1": 307,
+      "n_TC_abide2": 254
+    },
+    "glasser_fd30": {
+      "r_TC_meanFC_abide1_vs_abide2": 0.9877,
+      "n_TC_abide1": 380,
+      "n_TC_abide2": 326
+    },
+    "gordon_fd20": {
+      "r_TC_meanFC_abide1_vs_abide2": 0.9831,
+      "n_TC_abide1": 307,
+      "n_TC_abide2": 254
+    },
+    "gordon_fd30": {
+      "r_TC_meanFC_abide1_vs_abide2": 0.9848,
+      "n_TC_abide1": 380,
+      "n_TC_abide2": 326
+    }
+  },
+  "limit": 0
+}

@@ -1,0 +1,16 @@
+{
+  "generated": "2026-10-31T10:08:59",
+  "script": "scripts/B11s_features_sensitivity.py",
+  "variant": "oddeven",
+  "pass_column": "pass_fd20",
+  "fd": 0.2,
+  "atlas": "HCP2016",
+  "split": "oddeven",
+  "n_subjects": 985,
+  "n_parcels": 379,
+  "sec_half_median_iqr": [
+    171.0,
+    145.0,
+    198.0
+  ]
+}

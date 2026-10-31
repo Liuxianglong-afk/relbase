@@ -1,0 +1,34 @@
+{
+  "generated": "2026-10-30T18:20:59",
+  "script": "scripts/B11_features_reliability.py",
+  "n_subjects": 985,
+  "n_by_condition": {
+    "full": 985,
+    "half1": 985,
+    "half2": 985,
+    "run1": 117,
+    "run2": 117
+  },
+  "sec_half_median_iqr": [
+    171.0,
+    145.0,
+    198.0
+  ],
+  "run_check_counts": {
+    "single_run_site": 826,
+    "qualifying_runs=2": 117,
+    "qualifying_runs=1": 35,
+    "qualifying_runs=0": 7
+  },
+  "run_pairs_by_site": {
+    "ABIDEII-OHSU_1": 76,
+    "OHSU": 17,
+    "ABIDEII-IP_1": 15,
+    "ABIDEII-ONRC_2": 9
+  },
+  "sec_run_median": [
+    222.5,
+    222.5
+  ],
+  "thickness_nan_cells": 0
+}

@@ -1,0 +1,62 @@
+{
+  "generated": "2026-10-31T08:44:30",
+  "script": "scripts/B16_brain_figures.py",
+  "F3": {
+    "ABIDE_I_TC": {
+      "cortical_median": 0.2116,
+      "cortical_max": 0.4
+    },
+    "ABIDE_I_ASD": {
+      "cortical_median": 0.2407,
+      "cortical_max": 0.4184
+    },
+    "ABIDE_II_TC": {
+      "cortical_median": 0.2221,
+      "cortical_max": 0.3921
+    },
+    "ABIDE_II_ASD": {
+      "cortical_median": 0.1898,
+      "cortical_max": 0.418
+    },
+    "top5_tc_mean": {
+      "L_IPS1_ROI": 0.368,
+      "L_PGs_ROI": 0.356,
+      "L_V4t_ROI": 0.343,
+      "L_A4_ROI": 0.337,
+      "L_LIPd_ROI": 0.333
+    },
+    "bottom5_tc_mean": {
+      "R_AAIC_ROI": 0.029,
+      "R_PHA2_ROI": 0.033,
+      "R_IFSa_ROI": 0.071,
+      "R_PFm_ROI": 0.083,
+      "L_Pir_ROI": 0.093
+    }
+  },
+  "F4": {
+    "selection_rule": "ABIDE I 中两半 z 图空间 r 最接近本组中位数者（并列取编号较小者）",
+    "stats": {
+      "ASD": {
+        "r_half": 0.196,
+        "n_ext_half1": 12,
+        "n_ext_half2": 9,
+        "n_ext_both_same_sign": 1
+      },
+      "TC": {
+        "r_half": 0.188,
+        "n_ext_half1": 45,
+        "n_ext_half2": 10,
+        "n_ext_both_same_sign": 0
+      }
+    }
+  },
+  "F5": {
+    "half_sec_used": 174.0,
+    "median_minutes": 10.4,
+    "q10_q90_minutes": [
+      7.3,
+      16.8
+    ],
+    "share_parcels_le_10min": 0.456
+  }
+}

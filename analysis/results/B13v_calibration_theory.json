@@ -1,0 +1,316 @@
+{
+  "generated": "2026-10-30T19:48:33",
+  "script": "scripts/B13v_calibration_theory.py",
+  "sets": {
+    "strength": {
+      "pooled_expected_sd": 1.0712,
+      "pooled_observed_sd": 1.0764,
+      "max_abs_site_diff_obs_minus_exp": 0.0448,
+      "share_raw_z_at_bound_5.2": 3.482313863627232e-05,
+      "per_site": {
+        "ABIDEII-GU_1": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.104
+        },
+        "ABIDEII-IP_1": {
+          "k": 10,
+          "exp_sd": 1.217,
+          "obs_sd": 1.216
+        },
+        "ABIDEII-KKI_1": {
+          "k": 87,
+          "exp_sd": 1.018,
+          "obs_sd": 1.02
+        },
+        "ABIDEII-NYU_1": {
+          "k": 21,
+          "exp_sd": 1.083,
+          "obs_sd": 1.091
+        },
+        "ABIDEII-OHSU_1": {
+          "k": 55,
+          "exp_sd": 1.029,
+          "obs_sd": 1.031
+        },
+        "ABIDEII-SDSU_1": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.12
+        },
+        "ABIDEII-TCD_1": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.189
+        },
+        "KKI": {
+          "k": 19,
+          "exp_sd": 1.094,
+          "obs_sd": 1.101
+        },
+        "Leuven_2": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.186
+        },
+        "NYU": {
+          "k": 70,
+          "exp_sd": 1.022,
+          "obs_sd": 1.024
+        },
+        "OHSU": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.19
+        },
+        "SDSU": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.114
+        },
+        "Stanford": {
+          "k": 16,
+          "exp_sd": 1.116,
+          "obs_sd": 1.118
+        },
+        "Trinity": {
+          "k": 10,
+          "exp_sd": 1.217,
+          "obs_sd": 1.262
+        },
+        "UCLA_1": {
+          "k": 25,
+          "exp_sd": 1.068,
+          "obs_sd": 1.078
+        },
+        "UM_1": {
+          "k": 45,
+          "exp_sd": 1.036,
+          "obs_sd": 1.034
+        },
+        "UM_2": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.105
+        },
+        "USM": {
+          "k": 16,
+          "exp_sd": 1.116,
+          "obs_sd": 1.115
+        },
+        "Yale": {
+          "k": 19,
+          "exp_sd": 1.094,
+          "obs_sd": 1.104
+        }
+      }
+    },
+    "netfc": {
+      "pooled_expected_sd": 1.0712,
+      "pooled_observed_sd": 1.0746,
+      "max_abs_site_diff_obs_minus_exp": 0.0223,
+      "share_raw_z_at_bound_5.2": 4.4625425336085234e-05,
+      "per_site": {
+        "ABIDEII-GU_1": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.108
+        },
+        "ABIDEII-IP_1": {
+          "k": 10,
+          "exp_sd": 1.217,
+          "obs_sd": 1.224
+        },
+        "ABIDEII-KKI_1": {
+          "k": 87,
+          "exp_sd": 1.018,
+          "obs_sd": 1.019
+        },
+        "ABIDEII-NYU_1": {
+          "k": 21,
+          "exp_sd": 1.083,
+          "obs_sd": 1.092
+        },
+        "ABIDEII-OHSU_1": {
+          "k": 55,
+          "exp_sd": 1.029,
+          "obs_sd": 1.032
+        },
+        "ABIDEII-SDSU_1": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.11
+        },
+        "ABIDEII-TCD_1": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.19
+        },
+        "KKI": {
+          "k": 19,
+          "exp_sd": 1.094,
+          "obs_sd": 1.097
+        },
+        "Leuven_2": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.178
+        },
+        "NYU": {
+          "k": 70,
+          "exp_sd": 1.022,
+          "obs_sd": 1.025
+        },
+        "OHSU": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.171
+        },
+        "SDSU": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.105
+        },
+        "Stanford": {
+          "k": 16,
+          "exp_sd": 1.116,
+          "obs_sd": 1.123
+        },
+        "Trinity": {
+          "k": 10,
+          "exp_sd": 1.217,
+          "obs_sd": 1.208
+        },
+        "UCLA_1": {
+          "k": 25,
+          "exp_sd": 1.068,
+          "obs_sd": 1.067
+        },
+        "UM_1": {
+          "k": 45,
+          "exp_sd": 1.036,
+          "obs_sd": 1.037
+        },
+        "UM_2": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.112
+        },
+        "USM": {
+          "k": 16,
+          "exp_sd": 1.116,
+          "obs_sd": 1.12
+        },
+        "Yale": {
+          "k": 19,
+          "exp_sd": 1.094,
+          "obs_sd": 1.111
+        }
+      }
+    },
+    "thickness": {
+      "pooled_expected_sd": 1.0712,
+      "pooled_observed_sd": 1.0757,
+      "max_abs_site_diff_obs_minus_exp": 0.0432,
+      "share_raw_z_at_bound_5.2": 1.9740552735476595e-05,
+      "per_site": {
+        "ABIDEII-GU_1": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.15
+        },
+        "ABIDEII-IP_1": {
+          "k": 10,
+          "exp_sd": 1.217,
+          "obs_sd": 1.242
+        },
+        "ABIDEII-KKI_1": {
+          "k": 87,
+          "exp_sd": 1.018,
+          "obs_sd": 1.02
+        },
+        "ABIDEII-NYU_1": {
+          "k": 21,
+          "exp_sd": 1.083,
+          "obs_sd": 1.083
+        },
+        "ABIDEII-OHSU_1": {
+          "k": 55,
+          "exp_sd": 1.029,
+          "obs_sd": 1.03
+        },
+        "ABIDEII-SDSU_1": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.107
+        },
+        "ABIDEII-TCD_1": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.179
+        },
+        "KKI": {
+          "k": 19,
+          "exp_sd": 1.094,
+          "obs_sd": 1.103
+        },
+        "Leuven_2": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.168
+        },
+        "NYU": {
+          "k": 70,
+          "exp_sd": 1.022,
+          "obs_sd": 1.023
+        },
+        "OHSU": {
+          "k": 12,
+          "exp_sd": 1.168,
+          "obs_sd": 1.174
+        },
+        "SDSU": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.109
+        },
+        "Stanford": {
+          "k": 16,
+          "exp_sd": 1.116,
+          "obs_sd": 1.117
+        },
+        "Trinity": {
+          "k": 10,
+          "exp_sd": 1.217,
+          "obs_sd": 1.22
+        },
+        "UCLA_1": {
+          "k": 25,
+          "exp_sd": 1.068,
+          "obs_sd": 1.069
+        },
+        "UM_1": {
+          "k": 45,
+          "exp_sd": 1.036,
+          "obs_sd": 1.037
+        },
+        "UM_2": {
+          "k": 17,
+          "exp_sd": 1.107,
+          "obs_sd": 1.112
+        },
+        "USM": {
+          "k": 16,
+          "exp_sd": 1.116,
+          "obs_sd": 1.115
+        },
+        "Yale": {
+          "k": 19,
+          "exp_sd": 1.094,
+          "obs_sd": 1.11
+        }
+      }
+    }
+  },
+  "conclusion": "TC z' 的 SD 与留一理论值一致（差异来自 t 型膨胀，不是常模失准）；ASD 用全部 k 个 TC 标准化，膨胀略小，P2 极端比例在两组间的基线因此有轻微差异，报告时说明。"
+}
