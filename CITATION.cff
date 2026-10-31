@@ -10,8 +10,8 @@ repository-code: "https://github.com/Liuxianglong-afk/relbase"
 authors:
   - family-names: "Liu"
     given-names: "Xianglong"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"   (add when available)
-    # affiliation: ""                                   (add when available)
+    orcid: "https://orcid.org/0009-0001-7357-6233"
+    affiliation: "Department of Radiology, The First Affiliated Hospital of Henan University of Science and Technology"
 keywords:
   - normative modelling
   - reliability
