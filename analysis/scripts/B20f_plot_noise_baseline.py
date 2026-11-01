@@ -2,6 +2,7 @@
 
 (a) 平均两两 Jaccard ~ 分区信度，每条线一个共享比例 s（有序蓝色色阶，dataviz 蓝 ramp 250→700）；虚线 = ABIDE 全长预测信度。
 (b) 在 ABIDE 全长预测信度处：各 s 的模拟值（柱，误差线 = 跨种子 SD）与实测 ASD、TC（两个队列）水平线对比。
+    2026-11-02 改：实测值改用跨站点配对（results/B22_s5_site_pairs.json），与正文一致；全部配对含站点居中伪影。
 输出: figs_B1/F7_noise_baseline.png/.pdf
 用法: .venv_B/Scripts/python.exe -I scripts/B20f_plot_noise_baseline.py
 """
@@ -25,7 +26,8 @@ def main():
     S = sorted({v["s"] for v in g.values()})
     R = sorted({v["r"] for v in g.values()})
     r_obs = d["at_observed_reliability"]["r"]
-    obs = d["inputs"]["obs_mean_jaccard"]
+    b22 = json.loads((ROOT / "results/B22_s5_site_pairs.json").read_text(encoding="utf-8"))["results"]
+    obs = {g: {c: b22[c]["between_site_pairs"][g] for c in ["abide1", "abide2"]} for g in ["ASD", "TC"]}
     plt.rcParams.update({"font.size": 8, "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "grid.color": GRID,
                          "grid.linewidth": 0.6, "axes.edgecolor": MUTED, "xtick.color": MUTED, "ytick.color": MUTED})
     fig, (a, b) = plt.subplots(1, 2, figsize=(7.2, 3.1), gridspec_kw={"width_ratios": [1.25, 1]})
@@ -44,14 +46,14 @@ def main():
         b.text(i, v + 0.0025, f"{v:.3f}", ha="center", fontsize=6.5, color=INK)
     for grp in ["ASD", "TC"]:
         for c, lab, ls in [("abide1", "I", "-"), ("abide2", "II", (0, (4, 2)))]:
-            b.axhline(obs[grp][c], color=OBS_COL[grp], lw=1.4, ls=ls, label=f"observed {grp}, ABIDE {lab}: {obs[grp][c]:.3f}")
-    b.legend(frameon=False, fontsize=6.3, loc="upper left")
+            b.axhline(obs[grp][c], color=OBS_COL[grp], lw=1.4, ls=ls, label=f"{grp}, ABIDE {lab}: {obs[grp][c]:.3f}")
+    b.legend(title="Observed, between-site pairs", title_fontsize=6.3, frameon=False, fontsize=6.3, loc="upper left")
     b.grid(axis="x", visible=False)
     b.set_axisbelow(True)
     b.set_xticks(x); b.set_xticklabels([f"{s:g}" for s in S])
     b.set_xlabel("Shared fraction s"); b.set_ylabel("Mean pairwise Jaccard")
     b.set_title(f"b  At ICC ≈ {r_obs:.2f}", loc="left", fontsize=9)
-    b.set_ylim(0, max(vals) * 1.18)
+    b.set_ylim(0, max(vals) * 1.45)
     fig.tight_layout()
     fig.savefig(ROOT / "figs_B1/F7_noise_baseline.png", dpi=300)
     fig.savefig(ROOT / "figs_B1/F7_noise_baseline.pdf")

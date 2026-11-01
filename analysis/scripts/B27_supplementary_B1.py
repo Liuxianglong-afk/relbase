@@ -130,10 +130,10 @@ def main():
     rows = []
     for c in ["abide1", "abide2"]:
         j = b28["e_between_site_jaccard_ASD_TC"][c]
-        rows.append({"Cohort": COH[c], "Comparison": "Edges, |z| > 2", "ASD": j["between_site"][0], "TC": j["between_site"][1],
-                     "ASD − TC": round(j["between_site"][0] - j["between_site"][1], 5), "P": j["between_site_perm_p"]})
+        rows.append({"Cohort": COH[c], "Comparison": "Edges, |z| > 2", "ASD": f"{j['between_site'][0]:.5f}", "TC": f"{j['between_site'][1]:.5f}",
+                     "ASD − TC": f"{j['between_site'][0] - j['between_site'][1]:.5f}", "P": f"{j['between_site_perm_p']:.4f}"})
         for lab, src in [("Edges, fixed count", b28b[c]["edges"]), ("Edges, fixed count, symmetric scoring", b28c[c]), ("Parcels, fixed count", b28b[c]["parcels"])]:
-            rows.append({"Cohort": COH[c], "Comparison": lab, "ASD": src["between_site_ASD"], "TC": src["between_site_TC"], "ASD − TC": src["diff"], "P": src["perm_p"]})
+            rows.append({"Cohort": COH[c], "Comparison": lab, "ASD": f"{src['between_site_ASD']:.5f}", "TC": f"{src['between_site_TC']:.5f}", "ASD − TC": f"{src['diff']:.5f}", "P": f"{src['perm_p']:.4f}"})
     tabs["S11_overlap_counts"] = ("Table S11. Between-site overlap of extreme deviations (mean Jaccard) with a threshold and with a fixed number of extremes per participant "
                                   f"({b28b['abide1']['edges']['k']} edges or {b28b['abide1']['parcels']['k']} parcels); P from 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
 
@@ -173,9 +173,9 @@ def main():
     for u, v in b30["identification"].items():
         for s_ in ["s=0.0", "s=0.5"]:
             rows.append({"Sample": u, "n": v["n"], "Simulation": s_.replace("s=", "s = "),
-                         "Identification, simulated (95% range)": f"{v[s_]['identification_mean']} ({v[s_]['identification_q025_q975'][0]}–{v[s_]['identification_q025_q975'][1]})",
+                         "Identification, simulated (95% range)": f"{v[s_]['identification_mean']:.4f} ({v[s_]['identification_q025_q975'][0]:.4f}–{v[s_]['identification_q025_q975'][1]:.4f})",
                          "Identification, observed": v["observed_identification"],
-                         "Discriminability, simulated (95% range)": f"{v[s_]['discriminability_mean']} ({v[s_]['discriminability_q025_q975'][0]}–{v[s_]['discriminability_q025_q975'][1]})",
+                         "Discriminability, simulated (95% range)": f"{v[s_]['discriminability_mean']:.4f} ({v[s_]['discriminability_q025_q975'][0]:.4f}–{v[s_]['discriminability_q025_q975'][1]:.4f})",
                          "Discriminability, observed": v["observed_discriminability"]})
     tabs["S14a_identification_sim"] = ("Table S14a. Identification expected from parcel reliability alone: halves simulated with relbase at the observed TC split-half reliability of each parcel "
                                        "and the observed distribution of deviation scores (40 replicates).", pd.DataFrame(rows))
