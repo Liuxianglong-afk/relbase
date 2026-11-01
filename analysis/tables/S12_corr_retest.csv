@@ -1,0 +1,5 @@
+Sample,n,Within session (halves),"Between sessions, equal length","Between sessions, full length",Difference (95% CI),P2 within,P2 between
+"All, deviation z",71,0.1943,0.2463,0.3732,0.0519 (-0.0142 to 0.1231),0.0919,0.1168
+"All, raw FC strength",71,0.1679,0.157,0.2679,-0.0109 (-0.0797 to 0.0591),—,—
+"Interval ≤ 60 days, deviation z",51,0.182,0.1887,0.303,0.0067 (-0.0449 to 0.0688),0.0409,0.0481
+"Interval > 60 days, deviation z",20,0.2355,0.3749,0.4884,0.1394 (0.0239 to 0.2637),0.1696,0.2538

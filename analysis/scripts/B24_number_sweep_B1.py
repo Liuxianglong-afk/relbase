@@ -1,4 +1,4 @@
-"""课题 B1 手稿数字核查：手稿中每个数字是否能在结果文件（results/B*.json、tables_B1/*.csv）中按同等小数位找到来源。
+"""课题 B1 手稿数字核查：手稿中每个数字是否能在结果文件（results/B*.json、C0*.json、tables_B1/*.csv）中按同等小数位找到来源。
 
 规则: 小数按其小数位数四舍五入比对（百分数同时比对 /100 的值）；≥ 3 位整数直接比对；
       找不到来源的数字列出，供人工逐条判断（可能是推导值、文献值、方法参数或错误）。
@@ -34,7 +34,7 @@ def leaves(o):
 
 def pool():
     vals = []
-    for f in (ROOT / "results").glob("B*.json"):
+    for f in [*(ROOT / "results").glob("B*.json"), *(ROOT / "results").glob("C0*.json")]:
         vals += list(leaves(json.loads(f.read_text(encoding="utf-8"))))
     for f in (ROOT / "tables_B1").glob("*.csv"):
         for s in pd.read_csv(f).astype(str).values.ravel():

@@ -1,0 +1,101 @@
+{
+  "generated": "2026-11-01T23:37:26",
+  "script": "scripts/C03_corr_reliability.py",
+  "sessions_processed": 328,
+  "sessions_pass_qc_before_exclusion": 275,
+  "sessions_excluded_missing_parcels": 7,
+  "n": {
+    "reference_ses1": 169,
+    "retest_both_pass": 71,
+    "sites_reference": 14,
+    "parcels": 377,
+    "age_range_retest": [
+      12.0,
+      62.0
+    ],
+    "retest_days_median_iqr": [
+      42.0,
+      39.5,
+      94.5
+    ],
+    "sessions_pass_qc": 268,
+    "age_median_retest": 22.0,
+    "sites_retest": {
+      "BNU_1": 43,
+      "SWU_4": 10,
+      "IACAS": 7,
+      "IPCAS_2": 4,
+      "UPSM_1": 3,
+      "LMU_3": 2,
+      "SWU_2": 2
+    },
+    "sec_full_median_iqr": [
+      397,
+      363,
+      409
+    ],
+    "sec_half_median": 198.0
+  },
+  "deviation_z": {
+    "n": 71,
+    "within_ses1": 0.1825,
+    "within_ses2": 0.2062,
+    "within_mean": 0.1943,
+    "between_equal_length": 0.2463,
+    "between_full_length": 0.3732,
+    "between_minus_within": 0.0519,
+    "ci95_between_minus_within": [
+      -0.0142,
+      0.1231
+    ],
+    "ratio_between_to_within": 1.267,
+    "p2_within": 0.0919,
+    "p2_between_equal_length": 0.1168
+  },
+  "raw_strength": {
+    "n": 71,
+    "within_ses1": 0.1458,
+    "within_ses2": 0.19,
+    "within_mean": 0.1679,
+    "between_equal_length": 0.157,
+    "between_full_length": 0.2679,
+    "between_minus_within": -0.0109,
+    "ci95_between_minus_within": [
+      -0.0797,
+      0.0591
+    ],
+    "ratio_between_to_within": 0.935
+  },
+  "interval_le_60d": {
+    "n": 51,
+    "within_ses1": 0.1619,
+    "within_ses2": 0.2021,
+    "within_mean": 0.182,
+    "between_equal_length": 0.1887,
+    "between_full_length": 0.303,
+    "between_minus_within": 0.0067,
+    "ci95_between_minus_within": [
+      -0.0449,
+      0.0688
+    ],
+    "ratio_between_to_within": 1.037,
+    "p2_within": 0.0409,
+    "p2_between_equal_length": 0.0481
+  },
+  "interval_gt_60d": {
+    "n": 20,
+    "within_ses1": 0.2634,
+    "within_ses2": 0.2076,
+    "within_mean": 0.2355,
+    "between_equal_length": 0.3749,
+    "between_full_length": 0.4884,
+    "between_minus_within": 0.1394,
+    "ci95_between_minus_within": [
+      0.0239,
+      0.2637
+    ],
+    "ratio_between_to_within": 1.592,
+    "p2_within": 0.1696,
+    "p2_between_equal_length": 0.2538
+  }
+}

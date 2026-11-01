@@ -1,0 +1,15 @@
+{
+  "generated": "2026-11-01T20:46:29",
+  "n_keys_total": 32787,
+  "n_dtseries": 881,
+  "n_subjects_any": 382,
+  "n_subject_sessions_complete": 425,
+  "n_subjects_ge2_sessions": 139,
+  "sessions_per_subject": {
+    "1": 146,
+    "2": 138,
+    "3": 1
+  },
+  "dtseries_bytes_median": 78948272.0,
+  "download_gb_first_run_two_sessions": 20.3
+}

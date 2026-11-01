@@ -137,6 +137,22 @@ def main():
     tabs["S11_overlap_counts"] = ("Table S11. Between-site overlap of extreme deviations (mean Jaccard) with a threshold and with a fixed number of extremes per participant "
                                   f"({b28b['abide1']['edges']['k']} edges or {b28b['abide1']['parcels']['k']} parcels); P from 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
 
+    c03 = load("C03_corr_reliability.json")
+    rows = []
+    for lab, key in [("All, deviation z", "deviation_z"), ("All, raw FC strength", "raw_strength"),
+                     ("Interval ≤ 60 days, deviation z", "interval_le_60d"), ("Interval > 60 days, deviation z", "interval_gt_60d")]:
+        v = c03[key]
+        rows.append({"Sample": lab, "n": v["n"], "Within session (halves)": v["within_mean"],
+                     "Between sessions, equal length": v["between_equal_length"], "Between sessions, full length": v["between_full_length"],
+                     "Difference (95% CI)": f"{v['between_minus_within']} ({v['ci95_between_minus_within'][0]} to {v['ci95_between_minus_within'][1]})",
+                     "P2 within": v.get("p2_within", "—"), "P2 between": v.get("p2_between_equal_length", "—")})
+    n = c03["n"]
+    tabs["S12_corr_retest"] = ("Table S12. CoRR test–retest comparison: median ICC of 377 parcel FC strength measures within a session (two halves, mean of both sessions) "
+                               f"and between sessions. Reference sample {n['reference_ses1']} first sessions from {n['sites_reference']} sites; "
+                               f"retest interval median {n['retest_days_median_iqr'][0]} days (IQR {n['retest_days_median_iqr'][1]}–{n['retest_days_median_iqr'][2]}). "
+                               "Difference = between (equal length) − within; participant-level bootstrap, 1,000 resamples per seed, mean of bounds over four seeds. "
+                               "Interval strata differ in site composition and are descriptive.", pd.DataFrame(rows))
+
     for k, (cap, df) in tabs.items():
         df.to_csv(T / f"{k}.csv", index=False, encoding="utf-8")
         out.append(f"{cap}\n\n{md(df)}\n")

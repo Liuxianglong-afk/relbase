@@ -12,7 +12,7 @@ inferences about heterogeneity in autism"). It is a snapshot of the project at r
 | `scripts/` | Python and R scripts, numbered in the order they are run |
 | `protocol/` | shared preprocessing plan, the B1 analysis plan with its change log (section 12), and the frozen v1.0 text (SHA-256 ca187995…) |
 | `results/` | group-level results (JSON) behind every number in the article |
-| `tables/` | Tables 1–3 (CSV) |
+| `tables/` | Tables 1–3 and supplementary Tables S1–S12 (CSV) |
 
 No participant-level data are included. Participant identifiers that appeared as examples in a probe
 script and in the shared plan were replaced with `<ID>` in this copy.
@@ -21,7 +21,10 @@ script and in the shared plan were replaced with `<ID>` in this copy.
 
 ABIDE I and II phenotypes and DCAN ABCD-HCP derivatives are public in the FCP-INDI Amazon S3 bucket
 (`s3://fcp-indi/data/Projects/ABIDE/` and `s3://fcp-indi/data/Projects/ABIDE2/`); see
-https://fcon_1000.projects.nitrc.org/indi/abide/ for the data usage terms.
+https://fcon_1000.projects.nitrc.org/indi/abide/ for the data usage terms. CoRR test–retest data preprocessed with
+fMRIPrep are in the same bucket (`s3://fcp-indi/data/Projects/CORR/Outputs/fmriprep/`), with phenotypes at
+`s3://fcp-indi/data/Projects/CORR/RawData/CoRR_AggregatedPhenotypicData.csv`; the HCP-MMP1.0 annotation on fsaverage
+is at https://doi.org/10.6084/m9.figshare.3498446.v2.
 
 ## Running
 
@@ -39,6 +42,9 @@ Order:
 | 5 | B15, B17 | secondary endpoints S2/S4/S5, sensitivity analyses and S6 |
 | 6 | B16, B18, B19, B20f | figures and tables |
 | 7 | B20, B21, B22 | post hoc noise simulation, relbase validation and application, same- vs between-site overlap |
+| 8 | B25, B26, B28, B28b, B28c | reviewer-oriented checks, empirical-marginal baseline, edge-level analyses |
+| 9 | C00–C03 | CoRR inventory, download, features and within- vs between-session reliability |
+| 10 | B27, B24 | supplementary tables; check of manuscript numbers against result files |
 
 Python scripts were run with `python -I` (Python 3.12); package versions are listed in the Methods.
 Seeds: 42 (primary), 7, 123 and 2024.
