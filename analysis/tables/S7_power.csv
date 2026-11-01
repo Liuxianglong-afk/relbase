@@ -1,0 +1,5 @@
+Model,Cohort,n,s = 0.02,s = 0.04,s = 0.06,s = 0.08,s = 0.1,s = 0.12,s at 80% power
+Gaussian,ABIDE I,201,0.33,0.68,0.84,0.975,0.99,1.0,0.055
+Gaussian,ABIDE II,135,0.275,0.565,0.835,0.965,0.99,1.0,0.057
+Empirical marginal,ABIDE I,201,0.31,0.63,0.775,0.925,0.965,0.99,0.063
+Empirical marginal,ABIDE II,135,0.255,0.515,0.735,0.92,0.965,0.985,0.067

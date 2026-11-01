@@ -1,0 +1,7 @@
+Cohort,Pairs,ASD,TC,ASD − TC,P (within-site permutation)
+ABIDE I,All pairs,0.01633,0.0134,0.00293,0.0006
+ABIDE I,Same-site pairs,0.02552,0.00733,0.01819,0.0001
+ABIDE I,Between-site pairs,0.01516,0.01425,0.0009,0.26607
+ABIDE II,All pairs,0.01788,0.01294,0.00495,0.0013
+ABIDE II,Same-site pairs,0.02693,0.0089,0.01803,0.0001
+ABIDE II,Between-site pairs,0.01604,0.01424,0.0018,0.31117

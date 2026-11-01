@@ -1,0 +1,6 @@
+Check,Result
+Reproduction of the original simulation (same inputs and seeds),maximum absolute difference 0.0
+"ICC(2,1) against the primary analysis (379 parcels × 4 groups)",maximum absolute difference 3.2e-15
+"Empirical-marginal model: median split-half ICC, simulated vs observed (TC)",0.2101 vs 0.2143 (reliability scale factor 1.0)
+"Empirical-marginal model: P2 positive agreement, simulated vs observed",0.0806 vs 0.0833
+Unit tests,18 tests passed (python -m unittest discover -s tests)

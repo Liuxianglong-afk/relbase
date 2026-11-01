@@ -1,0 +1,4 @@
+Group,n,"Half length, s","Run length, s","Median ICC, halves","Predicted, runs","Observed, runs",Observed − predicted (95% CI)
+TC,65,347.5,224.1,0.2331,0.1639,0.2457,0.0818 (0.0376 to 0.1399)
+ASD,43,297.5,199.8,0.2542,0.1862,0.2311,0.0449 (-0.0155 to 0.1031)
+all,108,332.1,218.1,0.2398,0.1716,0.2421,0.0705 (0.0339 to 0.1141)
