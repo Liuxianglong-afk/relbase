@@ -1,0 +1,9 @@
+Cohort,Comparison,ASD,TC,ASD − TC,P
+ABIDE I,"Edges, |z| > 2",0.01617,0.01601,0.00016,0.7096
+ABIDE I,"Edges, fixed count",0.01664,0.01612,0.00051,0.0001
+ABIDE I,"Edges, fixed count, symmetric scoring",0.01662,0.01613,0.00049,0.0001
+ABIDE I,"Parcels, fixed count",0.01849,0.01707,0.00141,0.004
+ABIDE II,"Edges, |z| > 2",0.01895,0.01484,0.00411,0.0002
+ABIDE II,"Edges, fixed count",0.0165,0.01612,0.00037,0.0001
+ABIDE II,"Edges, fixed count, symmetric scoring",0.01649,0.01613,0.00036,0.0001
+ABIDE II,"Parcels, fixed count",0.01754,0.01747,6e-05,0.9086

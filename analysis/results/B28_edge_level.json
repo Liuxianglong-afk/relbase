@@ -1,0 +1,104 @@
+{
+  "generated": "2026-11-01T20:47:25",
+  "script": "scripts/B28_edge_level.py",
+  "n_edges": 71631,
+  "calibration_tc_full": {
+    "mean": 0.0007,
+    "sd": 1.0738,
+    "share_abs_gt2": 0.0632
+  },
+  "by_group": {
+    "TC_abide1": {
+      "n": 278,
+      "a_median_icc": 0.2477,
+      "a_ci95": [
+        0.2434,
+        0.2586
+      ],
+      "a_share_icc_ge_0.5": 0.01557,
+      "b_p2": 0.1017,
+      "b_p2_chance": 0.0341,
+      "c_max_prevalence_full": 0.0719,
+      "c_max_prevalence_half1": 0.0755,
+      "c_max_prevalence_half2": 0.0683,
+      "d_region_count_median_icc": 0.1699,
+      "d_network_count_median_icc": 0.3523,
+      "extreme_rate_full": 0.0654
+    },
+    "ASD_abide1": {
+      "n": 201,
+      "a_median_icc": 0.2468,
+      "a_ci95": [
+        0.2401,
+        0.2601
+      ],
+      "a_share_icc_ge_0.5": 0.01714,
+      "b_p2": 0.1057,
+      "b_p2_chance": 0.0432,
+      "c_max_prevalence_full": 0.1343,
+      "c_max_prevalence_half1": 0.1542,
+      "c_max_prevalence_half2": 0.1343,
+      "d_region_count_median_icc": 0.228,
+      "d_network_count_median_icc": 0.4974,
+      "extreme_rate_full": 0.065
+    },
+    "TC_abide2": {
+      "n": 219,
+      "a_median_icc": 0.2466,
+      "a_ci95": [
+        0.2404,
+        0.2596
+      ],
+      "a_share_icc_ge_0.5": 0.0234,
+      "b_p2": 0.0984,
+      "b_p2_chance": 0.0318,
+      "c_max_prevalence_full": 0.0731,
+      "c_max_prevalence_half1": 0.0685,
+      "c_max_prevalence_half2": 0.0731,
+      "d_region_count_median_icc": 0.2079,
+      "d_network_count_median_icc": 0.4591,
+      "extreme_rate_full": 0.0603
+    },
+    "ASD_abide2": {
+      "n": 135,
+      "a_median_icc": 0.2338,
+      "a_ci95": [
+        0.2222,
+        0.2476
+      ],
+      "a_share_icc_ge_0.5": 0.02031,
+      "b_p2": 0.1103,
+      "b_p2_chance": 0.0478,
+      "c_max_prevalence_full": 0.2,
+      "c_max_prevalence_half1": 0.1852,
+      "c_max_prevalence_half2": 0.1926,
+      "d_region_count_median_icc": 0.2353,
+      "d_network_count_median_icc": 0.5253,
+      "extreme_rate_full": 0.0772
+    }
+  },
+  "e_between_site_jaccard_ASD_TC": {
+    "abide1": {
+      "all_pairs": [
+        0.01688,
+        0.01508
+      ],
+      "between_site": [
+        0.01617,
+        0.01601
+      ],
+      "between_site_perm_p": 0.7096
+    },
+    "abide2": {
+      "all_pairs": [
+        0.02082,
+        0.01351
+      ],
+      "between_site": [
+        0.01895,
+        0.01484
+      ],
+      "between_site_perm_p": 0.0002
+    }
+  }
+}

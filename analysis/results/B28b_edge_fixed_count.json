@@ -1,0 +1,37 @@
+{
+  "generated": "2026-11-01T21:10:01",
+  "script": "scripts/B28b_edge_fixed_count.py",
+  "tc_extreme_rate_edges": 0.0632,
+  "abide1": {
+    "edges": {
+      "k": 4526,
+      "between_site_ASD": 0.01664,
+      "between_site_TC": 0.01612,
+      "diff": 0.00051,
+      "perm_p": 0.0001
+    },
+    "parcels": {
+      "k": 24,
+      "between_site_ASD": 0.01849,
+      "between_site_TC": 0.01707,
+      "diff": 0.00141,
+      "perm_p": 0.004
+    }
+  },
+  "abide2": {
+    "edges": {
+      "k": 4526,
+      "between_site_ASD": 0.0165,
+      "between_site_TC": 0.01612,
+      "diff": 0.00037,
+      "perm_p": 0.0001
+    },
+    "parcels": {
+      "k": 24,
+      "between_site_ASD": 0.01754,
+      "between_site_TC": 0.01747,
+      "diff": 6e-05,
+      "perm_p": 0.9086
+    }
+  }
+}

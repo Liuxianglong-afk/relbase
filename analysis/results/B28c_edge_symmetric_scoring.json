@@ -1,0 +1,21 @@
+{
+  "generated": "2026-11-01T21:10:59",
+  "script": "scripts/B28c_edge_symmetric_scoring.py",
+  "k": 4527,
+  "sd_tc": 1.0738,
+  "sd_asd": 1.1074,
+  "abide1": {
+    "k": 4527,
+    "between_site_ASD": 0.01662,
+    "between_site_TC": 0.01613,
+    "diff": 0.00049,
+    "perm_p": 0.0001
+  },
+  "abide2": {
+    "k": 4527,
+    "between_site_ASD": 0.01649,
+    "between_site_TC": 0.01613,
+    "diff": 0.00036,
+    "perm_p": 0.0001
+  }
+}

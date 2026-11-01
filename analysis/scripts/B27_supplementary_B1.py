@@ -118,6 +118,25 @@ def main():
         {"Check": "Empirical-marginal model: P2 positive agreement, simulated vs observed", "Result": f"{cal['p2_simulated']} vs {cal['p2_observed']}"},
         {"Check": "Unit tests", "Result": "18 tests passed (python -m unittest discover -s tests)"}]))
 
+    b28, b28b, b28c = load("B28_edge_level.json"), load("B28b_edge_fixed_count.json"), load("B28c_edge_symmetric_scoring.json")
+    rows = []
+    for k, v in b28["by_group"].items():
+        c, g = split(k)
+        rows.append({"Cohort": c, "Group": g, "n": v["n"], "Median edge ICC (95% CI)": f"{v['a_median_icc']} ({v['a_ci95'][0]}–{v['a_ci95'][1]})",
+                     "Edges ICC ≥ 0.5": v["a_share_icc_ge_0.5"], "P2": v["b_p2"], "P2 chance": v["b_p2_chance"],
+                     "Max same-sign prevalence": v["c_max_prevalence_full"], "Extreme rate": v["extreme_rate_full"],
+                     "ICC, counts by parcel": v["d_region_count_median_icc"], "ICC, counts by network": v["d_network_count_median_icc"]})
+    tabs["S10_edges"] = ("Table S10. Edge-level deviations (71,631 edges; linear normative model). Median ICC 95% CI from 200 bootstrap resamples per seed, mean of bounds over four seeds.", pd.DataFrame(rows))
+    rows = []
+    for c in ["abide1", "abide2"]:
+        j = b28["e_between_site_jaccard_ASD_TC"][c]
+        rows.append({"Cohort": COH[c], "Comparison": "Edges, |z| > 2", "ASD": j["between_site"][0], "TC": j["between_site"][1],
+                     "ASD − TC": round(j["between_site"][0] - j["between_site"][1], 5), "P": j["between_site_perm_p"]})
+        for lab, src in [("Edges, fixed count", b28b[c]["edges"]), ("Edges, fixed count, symmetric scoring", b28c[c]), ("Parcels, fixed count", b28b[c]["parcels"])]:
+            rows.append({"Cohort": COH[c], "Comparison": lab, "ASD": src["between_site_ASD"], "TC": src["between_site_TC"], "ASD − TC": src["diff"], "P": src["perm_p"]})
+    tabs["S11_overlap_counts"] = ("Table S11. Between-site overlap of extreme deviations (mean Jaccard) with a threshold and with a fixed number of extremes per participant "
+                                  f"({b28b['abide1']['edges']['k']} edges or {b28b['abide1']['parcels']['k']} parcels); P from 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
+
     for k, (cap, df) in tabs.items():
         df.to_csv(T / f"{k}.csv", index=False, encoding="utf-8")
         out.append(f"{cap}\n\n{md(df)}\n")
