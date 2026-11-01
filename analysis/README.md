@@ -12,7 +12,7 @@ inferences about heterogeneity in autism"). It is a snapshot of the project at r
 | `scripts/` | Python and R scripts, numbered in the order they are run |
 | `protocol/` | shared preprocessing plan, the B1 analysis plan with its change log (section 12), and the frozen v1.0 text (SHA-256 ca187995…) |
 | `results/` | group-level results (JSON) behind every number in the article |
-| `tables/` | Tables 1–3 and supplementary Tables S1–S12 (CSV) |
+| `tables/` | Tables 1–3 and supplementary Tables S1–S14 (CSV) |
 
 No participant-level data are included. Participant identifiers that appeared as examples in a probe
 script and in the shared plan were replaced with `<ID>` in this copy.
@@ -42,8 +42,8 @@ Order:
 | 5 | B15, B17 | secondary endpoints S2/S4/S5, sensitivity analyses and S6 |
 | 6 | B16, B18, B19, B20f | figures and tables |
 | 7 | B20, B21, B22 | post hoc noise simulation, relbase validation and application, same- vs between-site overlap |
-| 8 | B25, B26, B28, B28b, B28c | reviewer-oriented checks, empirical-marginal baseline, edge-level analyses |
-| 9 | C00–C03 | CoRR inventory, download, features and within- vs between-session reliability |
+| 8 | B25, B26, B28, B28b, B28c, B29, B30 | reviewer-oriented checks, empirical-marginal baseline, edge-level analyses, ICC(3,1) and multivariate reliability, subtype baseline |
+| 9 | C00–C03 | CoRR inventory, download, features and within- vs between-session reliability (C02 --no-gsr, C03 --variant nogsr: without global signal regression) |
 | 10 | B27, B24 | supplementary tables; check of manuscript numbers against result files |
 
 Python scripts were run with `python -I` (Python 3.12); package versions are listed in the Methods.
