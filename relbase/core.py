@@ -150,28 +150,47 @@ class BaselineModel:
             raise ValueError("reliability must lie in [0, 1]")
         return r
 
-    def simulate(self, rng, n, reliability, shared_fraction):
-        """One simulated group: n participants x P features."""
-        r = self._reliability(reliability)
-        s = float(shared_fraction)
-        C = self._draw(rng, self.L_signal, 1)
-        T = np.sqrt(s) * C + np.sqrt(1 - s) * self._draw(rng, self.L_signal, n)
-        latent = np.sqrt(r) * T + np.sqrt(1 - r) * self._draw(rng, self.L_noise, n)
+    def _true(self, rng, n, shared_fraction, n_subtypes):
+        """True deviations: each participant's subtype pattern (weight s) plus an individual pattern (weight 1 - s)."""
+        s, k = float(shared_fraction), int(n_subtypes)
+        if k < 1:
+            raise ValueError("n_subtypes must be at least 1")
+        C = self._draw(rng, self.L_signal, k)
+        g = np.zeros(n, dtype=int) if k == 1 else rng.permutation(np.arange(n) % k)  # equal-sized subtypes
+        return np.sqrt(s) * C[g] + np.sqrt(1 - s) * self._draw(rng, self.L_signal, n)
+
+    def _measure(self, rng, T, r):
+        latent = np.sqrt(r) * T + np.sqrt(1 - r) * self._draw(rng, self.L_noise, T.shape[0])
         if self.marginal is not None:
             return self._to_marginal(latent)
         return self.scale * latent
 
-    def overlap_distribution(self, n, reliability, shared_fraction, metric="jaccard", reps=25, seed=42):
+    def simulate(self, rng, n, reliability, shared_fraction, n_subtypes=1):
+        """One simulated group: n participants x P features.
+
+        With n_subtypes = k > 1, participants are split into k equal subtypes, each with its own shared pattern;
+        shared_fraction is then the fraction of true variance shared within a subtype.
+        """
+        r = self._reliability(reliability)
+        return self._measure(rng, self._true(rng, n, shared_fraction, n_subtypes), r)
+
+    def simulate_pair(self, rng, n, reliability, shared_fraction=0.0, n_subtypes=1):
+        """Two independent measurements (e.g. the halves of a scan) of the same simulated group."""
+        r = self._reliability(reliability)
+        T = self._true(rng, n, shared_fraction, n_subtypes)
+        return self._measure(rng, T, r), self._measure(rng, T, r)
+
+    def overlap_distribution(self, n, reliability, shared_fraction, metric="jaccard", reps=25, seed=42, n_subtypes=1):
         f = METRICS[metric]
         rng = np.random.default_rng(seed)
-        return np.array([f(self.simulate(rng, n, reliability, shared_fraction), self.threshold) for _ in range(reps)])
+        return np.array([f(self.simulate(rng, n, reliability, shared_fraction, n_subtypes), self.threshold) for _ in range(reps)])
 
-    def baseline_curve(self, n, reliability, s_grid=DEFAULT_S_GRID, metric="jaccard", reps=25, seeds=DEFAULT_SEEDS):
+    def baseline_curve(self, n, reliability, s_grid=DEFAULT_S_GRID, metric="jaccard", reps=25, seeds=DEFAULT_SEEDS, n_subtypes=1):
         """Expected overlap for each shared fraction; replicates pooled over seeds."""
         r_off = int(1e5 * float(reliability)) if np.ndim(reliability) == 0 else 0
         rows = []
         for s in s_grid:
-            per_seed = [self.overlap_distribution(n, reliability, s, metric, reps, sd + int(1000 * s) + r_off) for sd in seeds]
+            per_seed = [self.overlap_distribution(n, reliability, s, metric, reps, sd + int(1000 * s) + r_off, n_subtypes) for sd in seeds]
             pooled = np.concatenate(per_seed)
             rows.append({"s": float(s), "mean": float(np.mean([v.mean() for v in per_seed])),
                          "sd_over_seeds": float(np.std([v.mean() for v in per_seed])),
@@ -183,6 +202,39 @@ class BaselineModel:
         null = self.overlap_distribution(n, reliability, 0.0, metric, reps, seed)
         return {"observed": float(observed), "null_mean": float(null.mean()), "null_q975": float(np.quantile(null, 0.975)),
                 "p_one_sided": float((1 + (null >= observed).sum()) / (reps + 1)), "reps": reps}
+
+
+def identification_rate(a, b):
+    """Share of participants whose map in `a` correlates best with their own map in `b` (and vice versa), averaged.
+
+    a, b: participants x features, rows in the same participant order. Chance level is 1 / n.
+    """
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    za = (a - a.mean(1, keepdims=True)) / a.std(1, keepdims=True)
+    zb = (b - b.mean(1, keepdims=True)) / b.std(1, keepdims=True)
+    R = za @ zb.T
+    idx = np.arange(len(a))
+    return float((np.mean(R.argmax(1) == idx) + np.mean(R.argmax(0) == idx)) / 2)
+
+
+def discriminability(a, b):
+    """Bridgeford et al. (2021) discriminability for two measurements per participant (chance level 0.5).
+
+    For each measurement, the share of measurements of other participants that are farther away (Euclidean)
+    than the participant's other measurement.
+    """
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    n = len(a)
+
+    def sq(x, y):
+        return (x ** 2).sum(1)[:, None] + (y ** 2).sum(1)[None, :] - 2 * x @ y.T
+    Dab, Daa, Dbb = sq(a, b), sq(a, a), sq(b, b)
+    w = np.diag(Dab)
+    out = []
+    for i in range(n):
+        for row in (np.r_[Dab[i], Daa[i]], np.r_[Dab[:, i], Dbb[i]]):
+            out.append(np.mean(np.delete(row, [i, n + i]) > w[i]))
+    return float(np.mean(out))
 
 
 def implied_shared_fraction(observed, curve):

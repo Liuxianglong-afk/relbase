@@ -24,6 +24,14 @@ Deviation scores often have heavier tails than a Gaussian. With `marginal=` (obs
 the group, or `marginal_quantiles` of them), the Gaussian values are mapped onto that empirical distribution
 (a Gaussian copula), so simulated extremes occur at the observed rate at every threshold.
 
+Subtypes: with `n_subtypes=k`, participants are split into k equal-sized subtypes, each with its own shared
+pattern, and s is the fraction of true variance shared within a subtype (`simulate`, `overlap_distribution`,
+`baseline_curve`; k = 1 is the model above).
+
+Repeated measurements: `simulate_pair` returns two independent measurements of the same simulated group,
+for example to compare `identification_rate` (fingerprinting) or `discriminability` of observed maps with
+the values expected from univariate reliability alone.
+
 Overlap metrics (extremes are |z| > threshold, with sign):
 
 | metric | definition |
@@ -80,6 +88,8 @@ correlation matrices and per-feature reliability only).
   simulated measurements matches the observed one and rescale reliability if it does not.
 - `test_heterogeneous_null` asks whether overlap exceeds that expected from fully individual deviations;
   `implied_shared_fraction` inverts the baseline curve (interval from the 2.5–97.5% simulation bands).
+- Identification of participants from whole maps can be high even when every feature is unreliable,
+  because it pools many weak features; compare it with `simulate_pair` at the observed reliability.
 
 ## Analysis code of the accompanying study
 

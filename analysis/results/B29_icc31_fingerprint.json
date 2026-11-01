@@ -1,0 +1,248 @@
+{
+  "generated": "2026-11-02T01:08:58",
+  "script": "scripts/B29_icc31_fingerprint.py",
+  "results": {
+    "strength_half": {
+      "ABIDE I TC": {
+        "median_icc21": 0.2094,
+        "median_icc31": 0.2088,
+        "mean_shift_seg2_minus_seg1": 0.0003,
+        "n": 278,
+        "identification": 0.3255,
+        "chance": 0.0036,
+        "median_r_self": 0.1883,
+        "median_r_other": -0.001,
+        "differential_identifiability": 0.1903,
+        "discriminability": 0.7784
+      },
+      "ABIDE I ASD": {
+        "median_icc21": 0.2379,
+        "median_icc31": 0.2379,
+        "mean_shift_seg2_minus_seg1": -0.0674,
+        "n": 201,
+        "identification": 0.403,
+        "chance": 0.005,
+        "median_r_self": 0.1964,
+        "median_r_other": 0.0055,
+        "differential_identifiability": 0.1927,
+        "discriminability": 0.7933
+      },
+      "ABIDE I all": {
+        "median_icc21": 0.2215,
+        "median_icc31": 0.2211,
+        "mean_shift_seg2_minus_seg1": -0.0281,
+        "n": 479,
+        "identification": 0.3027,
+        "chance": 0.0021,
+        "median_r_self": 0.1918,
+        "median_r_other": 0.0007,
+        "differential_identifiability": 0.1923,
+        "discriminability": 0.7852
+      },
+      "ABIDE II TC": {
+        "median_icc21": 0.2212,
+        "median_icc31": 0.2204,
+        "mean_shift_seg2_minus_seg1": -0.0004,
+        "n": 219,
+        "identification": 0.3927,
+        "chance": 0.0046,
+        "median_r_self": 0.1971,
+        "median_r_other": -0.0016,
+        "differential_identifiability": 0.1962,
+        "discriminability": 0.7846
+      },
+      "ABIDE II ASD": {
+        "median_icc21": 0.1868,
+        "median_icc31": 0.1868,
+        "mean_shift_seg2_minus_seg1": -0.0128,
+        "n": 135,
+        "identification": 0.3778,
+        "chance": 0.0074,
+        "median_r_self": 0.1786,
+        "median_r_other": 0.0051,
+        "differential_identifiability": 0.1798,
+        "discriminability": 0.7381
+      },
+      "ABIDE II all": {
+        "median_icc21": 0.2064,
+        "median_icc31": 0.2063,
+        "mean_shift_seg2_minus_seg1": -0.0051,
+        "n": 354,
+        "identification": 0.3446,
+        "chance": 0.0028,
+        "median_r_self": 0.1914,
+        "median_r_other": 0.0003,
+        "differential_identifiability": 0.1908,
+        "discriminability": 0.7688
+      }
+    },
+    "strength_run": {
+      "pooled TC": {
+        "median_icc21": 0.2457,
+        "median_icc31": 0.2473,
+        "mean_shift_seg2_minus_seg1": -0.0744,
+        "n": 65,
+        "identification": 0.3769,
+        "chance": 0.0154,
+        "median_r_self": 0.1875,
+        "median_r_other": -0.0032,
+        "differential_identifiability": 0.2033,
+        "discriminability": 0.7785
+      },
+      "pooled ASD": {
+        "median_icc21": 0.2311,
+        "median_icc31": 0.2324,
+        "mean_shift_seg2_minus_seg1": 0.0051,
+        "n": 43,
+        "identification": 0.407,
+        "chance": 0.0233,
+        "median_r_self": 0.2059,
+        "median_r_other": 0.0189,
+        "differential_identifiability": 0.1984,
+        "discriminability": 0.7734
+      },
+      "pooled all": {
+        "median_icc21": 0.2421,
+        "median_icc31": 0.2434,
+        "mean_shift_seg2_minus_seg1": -0.0428,
+        "n": 108,
+        "identification": 0.3472,
+        "chance": 0.0093,
+        "median_r_self": 0.1892,
+        "median_r_other": 0.0026,
+        "differential_identifiability": 0.2044,
+        "discriminability": 0.7794
+      }
+    },
+    "netfc_half": {
+      "ABIDE I TC": {
+        "median_icc21": 0.2834,
+        "median_icc31": 0.2827,
+        "mean_shift_seg2_minus_seg1": 0.0002,
+        "n": 278,
+        "identification": 0.1709,
+        "chance": 0.0036,
+        "median_r_self": 0.2897,
+        "median_r_other": -0.0045,
+        "differential_identifiability": 0.2994,
+        "discriminability": 0.8411
+      },
+      "ABIDE I ASD": {
+        "median_icc21": 0.3038,
+        "median_icc31": 0.3041,
+        "mean_shift_seg2_minus_seg1": 0.0029,
+        "n": 201,
+        "identification": 0.2861,
+        "chance": 0.005,
+        "median_r_self": 0.3215,
+        "median_r_other": 0.0132,
+        "differential_identifiability": 0.299,
+        "discriminability": 0.8354
+      },
+      "ABIDE I all": {
+        "median_icc21": 0.2961,
+        "median_icc31": 0.2961,
+        "mean_shift_seg2_minus_seg1": 0.0013,
+        "n": 479,
+        "identification": 0.1795,
+        "chance": 0.0021,
+        "median_r_self": 0.3047,
+        "median_r_other": -0.0003,
+        "differential_identifiability": 0.3025,
+        "discriminability": 0.8402
+      },
+      "ABIDE II TC": {
+        "median_icc21": 0.2853,
+        "median_icc31": 0.2844,
+        "mean_shift_seg2_minus_seg1": -0.0004,
+        "n": 219,
+        "identification": 0.2763,
+        "chance": 0.0046,
+        "median_r_self": 0.3078,
+        "median_r_other": -0.006,
+        "differential_identifiability": 0.3012,
+        "discriminability": 0.8346
+      },
+      "ABIDE II ASD": {
+        "median_icc21": 0.2893,
+        "median_icc31": 0.2892,
+        "mean_shift_seg2_minus_seg1": 0.0092,
+        "n": 135,
+        "identification": 0.2333,
+        "chance": 0.0074,
+        "median_r_self": 0.2959,
+        "median_r_other": 0.0114,
+        "differential_identifiability": 0.2782,
+        "discriminability": 0.8249
+      },
+      "ABIDE II all": {
+        "median_icc21": 0.2802,
+        "median_icc31": 0.2799,
+        "mean_shift_seg2_minus_seg1": 0.0032,
+        "n": 354,
+        "identification": 0.209,
+        "chance": 0.0028,
+        "median_r_self": 0.3039,
+        "median_r_other": -0.0022,
+        "differential_identifiability": 0.2948,
+        "discriminability": 0.8329
+      }
+    },
+    "edges_half": {
+      "ABIDE I TC": {
+        "n": 278,
+        "identification": 0.9964,
+        "chance": 0.0036,
+        "median_r_self": 0.252,
+        "median_r_other": -0.0016,
+        "differential_identifiability": 0.2595,
+        "discriminability": 0.9718
+      },
+      "ABIDE I ASD": {
+        "n": 201,
+        "identification": 0.9776,
+        "chance": 0.005,
+        "median_r_self": 0.2498,
+        "median_r_other": 0.0044,
+        "differential_identifiability": 0.2558,
+        "discriminability": 0.9573
+      },
+      "ABIDE I all": {
+        "n": 479,
+        "identification": 0.9885,
+        "chance": 0.0021,
+        "median_r_self": 0.2517,
+        "median_r_other": 0.0001,
+        "differential_identifiability": 0.2589,
+        "discriminability": 0.9663
+      },
+      "ABIDE II TC": {
+        "n": 219,
+        "identification": 0.9909,
+        "chance": 0.0046,
+        "median_r_self": 0.2612,
+        "median_r_other": -0.002,
+        "differential_identifiability": 0.262,
+        "discriminability": 0.9523
+      },
+      "ABIDE II ASD": {
+        "n": 135,
+        "identification": 0.9889,
+        "chance": 0.0074,
+        "median_r_self": 0.2498,
+        "median_r_other": 0.005,
+        "differential_identifiability": 0.2459,
+        "discriminability": 0.9139
+      },
+      "ABIDE II all": {
+        "n": 354,
+        "identification": 0.9873,
+        "chance": 0.0028,
+        "median_r_self": 0.2589,
+        "median_r_other": -0.0002,
+        "differential_identifiability": 0.2569,
+        "discriminability": 0.9347
+      }
+    }
+  }
+}

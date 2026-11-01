@@ -116,7 +116,7 @@ def main():
         {"Check": "ICC(2,1) against the primary analysis (379 parcels × 4 groups)", "Result": f"maximum absolute difference {max(v['max_abs_diff'] for v in b21['validation_icc_vs_B14'].values()):.1e}"},
         {"Check": "Empirical-marginal model: median split-half ICC, simulated vs observed (TC)", "Result": f"{cal['mapped_icc_calibrated']} vs {cal['observed_tc_half_median_icc']} (reliability scale factor {cal['reliability_scale_factor']})"},
         {"Check": "Empirical-marginal model: P2 positive agreement, simulated vs observed", "Result": f"{cal['p2_simulated']} vs {cal['p2_observed']}"},
-        {"Check": "Unit tests", "Result": "18 tests passed (python -m unittest discover -s tests)"}]))
+        {"Check": "Unit tests", "Result": "22 tests passed (python -m unittest discover -s tests)"}]))
 
     b28, b28b, b28c = load("B28_edge_level.json"), load("B28b_edge_fixed_count.json"), load("B28c_edge_symmetric_scoring.json")
     rows = []
@@ -146,12 +146,51 @@ def main():
                      "Between sessions, equal length": v["between_equal_length"], "Between sessions, full length": v["between_full_length"],
                      "Difference (95% CI)": f"{v['between_minus_within']} ({v['ci95_between_minus_within'][0]} to {v['ci95_between_minus_within'][1]})",
                      "P2 within": v.get("p2_within", "—"), "P2 between": v.get("p2_between_equal_length", "—")})
+    ng = load("C03_corr_reliability_nogsr.json")["deviation_z"]
+    rows.append({"Sample": "All, deviation z, no global signal regression", "n": ng["n"], "Within session (halves)": ng["within_mean"],
+                 "Between sessions, equal length": ng["between_equal_length"], "Between sessions, full length": ng["between_full_length"],
+                 "Difference (95% CI)": f"{ng['between_minus_within']} ({ng['ci95_between_minus_within'][0]} to {ng['ci95_between_minus_within'][1]})",
+                 "P2 within": ng["p2_within"], "P2 between": ng["p2_between_equal_length"]})
     n = c03["n"]
     tabs["S12_corr_retest"] = ("Table S12. CoRR test–retest comparison: median ICC of 377 parcel FC strength measures within a session (two halves, mean of both sessions) "
                                f"and between sessions. Reference sample {n['reference_ses1']} first sessions from {n['sites_reference']} sites; "
                                f"retest interval median {n['retest_days_median_iqr'][0]} days (IQR {n['retest_days_median_iqr'][1]}–{n['retest_days_median_iqr'][2]}). "
                                "Difference = between (equal length) − within; participant-level bootstrap, 1,000 resamples per seed, mean of bounds over four seeds. "
                                "Interval strata differ in site composition and are descriptive.", pd.DataFrame(rows))
+
+    b29 = load("B29_icc31_fingerprint.json")["results"]
+    rows = []
+    for fs, flab in [("strength_half", "Parcel FC strength, halves"), ("strength_run", "Parcel FC strength, runs"), ("netfc_half", "Network FC, halves"), ("edges_half", "Edges, halves")]:
+        for u, v in b29[fs].items():
+            rows.append({"Features": flab, "Sample": u, "n": v["n"], "Median ICC(2,1)": v.get("median_icc21", "—"), "Median ICC(3,1)": v.get("median_icc31", "—"),
+                         "Median map r, self": v["median_r_self"], "Median map r, others": v["median_r_other"],
+                         "Identification": v["identification"], "Chance": v["chance"], "Discriminability": v["discriminability"]})
+    tabs["S13_multivariate"] = ("Table S13. Consistency ICC(3,1) and multivariate reliability of deviation maps. Identification: share of participants whose first-segment map "
+                                "correlated best with their own second-segment map among all participants in the sample (mean of both directions); "
+                                "discriminability (chance 0.5) after Bridgeford et al.", pd.DataFrame(rows))
+    b30 = load("B30_relbase_identification_subtypes.json")
+    rows = []
+    for u, v in b30["identification"].items():
+        for s_ in ["s=0.0", "s=0.5"]:
+            rows.append({"Sample": u, "n": v["n"], "Simulation": s_.replace("s=", "s = "),
+                         "Identification, simulated (95% range)": f"{v[s_]['identification_mean']} ({v[s_]['identification_q025_q975'][0]}–{v[s_]['identification_q025_q975'][1]})",
+                         "Identification, observed": v["observed_identification"],
+                         "Discriminability, simulated (95% range)": f"{v[s_]['discriminability_mean']} ({v[s_]['discriminability_q025_q975'][0]}–{v[s_]['discriminability_q025_q975'][1]})",
+                         "Discriminability, observed": v["observed_discriminability"]})
+    tabs["S14a_identification_sim"] = ("Table S14a. Identification expected from parcel reliability alone: halves simulated with relbase at the observed TC split-half reliability of each parcel "
+                                       "and the observed distribution of deviation scores (40 replicates).", pd.DataFrame(rows))
+    rows = []
+    for g, v in b30["subtypes"].items():
+        for k in ["K=1", "K=2", "K=3", "K=5"]:
+            r = {"Group": g.replace("ASD_abide1", "ABIDE I ASD").replace("ASD_abide2", "ABIDE II ASD"), "n": v["n"], "Subtypes": k.replace("K=", "")}
+            for s_, w in v[k].items():
+                if s_ != "min_s_power80":
+                    r[f"Power, s = {s_}"] = w["power"]
+            r["Smallest s with 80% power"] = v[k]["min_s_power80"] if v[k]["min_s_power80"] is not None else "> 1"
+            rows.append(r)
+    tabs["S14b_subtypes"] = ("Table S14b. Power of the between-person overlap test (one-sided, α = .05 against fully individual true deviations) when the group consists of K equal-sized subtypes, "
+                             "each with its own shared pattern; s is the fraction of true variance shared within a subtype. Full-length reliability and the group's observed distribution of deviation scores; "
+                             "200 replicates per cell, null from 1,000 replicates.", pd.DataFrame(rows))
 
     for k, (cap, df) in tabs.items():
         df.to_csv(T / f"{k}.csv", index=False, encoding="utf-8")

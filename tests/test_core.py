@@ -3,7 +3,7 @@ import unittest
 
 import numpy as np
 
-from relbase import (BaselineModel, estimate_inputs, icc21, implied_shared_fraction, marginal_quantiles, max_prevalence, mean_jaccard,
+from relbase import (BaselineModel, discriminability, estimate_inputs, icc21, identification_rate, implied_shared_fraction, marginal_quantiles, max_prevalence, mean_jaccard,
                      mean_prevalence, spearman_brown)
 
 
@@ -139,6 +139,39 @@ class TestInference(unittest.TestCase):
         self.assertEqual(d["R_signal"].shape, (10, 10))
         np.testing.assert_allclose(np.median(d["reliability_half"]), 0.5, atol=0.1)
         np.testing.assert_allclose(d["reliability_full"], spearman_brown(np.clip(d["reliability_half"], 0, 1), 2))
+
+
+class TestSubtypesAndPairs(unittest.TestCase):
+    def setUp(self):
+        P = 40
+        idx = np.arange(P)
+        R = 0.3 ** np.abs(idx[:, None] - idx[None, :])
+        self.model = BaselineModel(R, R)
+
+    def test_one_subtype_reproduces_original(self):
+        a = self.model.simulate(np.random.default_rng(5), 50, 0.4, 0.3)
+        b = self.model.simulate(np.random.default_rng(5), 50, 0.4, 0.3, n_subtypes=1)
+        np.testing.assert_array_equal(a, b)
+
+    def test_subtypes_lower_overlap(self):
+        one = self.model.overlap_distribution(200, 0.9, 1.0, reps=10, seed=1).mean()
+        three = self.model.overlap_distribution(200, 0.9, 1.0, reps=10, seed=1, n_subtypes=3).mean()
+        none = self.model.overlap_distribution(200, 0.9, 0.0, reps=10, seed=1).mean()
+        self.assertGreater(one, three)
+        self.assertGreater(three, none)
+
+    def test_pair_reliability(self):
+        a, b = self.model.simulate_pair(np.random.default_rng(2), 3000, 0.4)
+        self.assertAlmostEqual(float(np.median(icc21(a, b))), 0.4, delta=0.05)
+
+    def test_identification_and_discriminability(self):
+        rng = np.random.default_rng(0)
+        x = rng.standard_normal((30, 200))
+        self.assertEqual(identification_rate(x, x + 0.01 * rng.standard_normal(x.shape)), 1.0)
+        self.assertAlmostEqual(discriminability(x, x + 0.01 * rng.standard_normal(x.shape)), 1.0)
+        y = rng.standard_normal((30, 200))
+        self.assertLess(identification_rate(x, y), 0.2)
+        self.assertAlmostEqual(discriminability(x, y), 0.5, delta=0.05)
 
 
 if __name__ == "__main__":

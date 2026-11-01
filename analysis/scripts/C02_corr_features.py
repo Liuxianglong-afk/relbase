@@ -11,7 +11,8 @@
 质控: 剔帧后保留 ≥ 240 s（同 ABIDE）。
 缺失: L_H_ROI、R_H_ROI 位于 fmriprep fsaverage5 CIFTI 的内侧壁掩膜内，无顶点；记为缺失，FC 强度在其余 377 个分区上计算。
 输出: derivatives/corr/C02_strength_{full,half1,half2}.csv、C02_meta.csv（含被试编号，仅本地）
-用法: .venv_B/Scripts/python.exe -I scripts/C02_corr_features.py [--check]
+用法: .venv_B/Scripts/python.exe -I scripts/C02_corr_features.py [--check] [--no-gsr]
+  --no-gsr: 不回归全脑信号（敏感性分析，2026-11-02），输出到 derivatives/corr/nogsr/
 """
 import argparse
 import sys
@@ -50,11 +51,11 @@ def grayordinate_names(ax, annots):
     return g
 
 
-def confound_matrix(cf):
+def confound_matrix(cf, gsr=True):
     """24 参数头动模型（6 参数、一阶差分、二者的平方；此版 fmriprep 只提供 6 参数，差分与平方在此计算）+ WM + CSF + GS。"""
     M = cf[["trans_x", "trans_y", "trans_z", "rot_x", "rot_y", "rot_z"]].fillna(0).to_numpy(float)
     D = np.vstack([np.zeros((1, 6)), np.diff(M, axis=0)])
-    S = cf[["white_matter", "csf", "global_signal"]].fillna(0).to_numpy(float)
+    S = cf[["white_matter", "csf"] + (["global_signal"] if gsr else [])].fillna(0).to_numpy(float)
     return np.column_stack([np.ones(len(M)), M, D, M ** 2, D ** 2, S])
 
 
@@ -81,7 +82,7 @@ def strength(ts):
     return np.nanmean(np.where(fc > 0, fc, np.nan), axis=1)
 
 
-def process(dts, cfp, names, annots):
+def process(dts, cfp, names, annots, gsr=True):
     img = nib.load(dts)
     ax = img.header.get_axis(1)
     g = grayordinate_names(ax, annots)
@@ -93,7 +94,7 @@ def process(dts, cfp, names, annots):
     cf = pd.read_csv(cfp, sep="\t")
     nss = cf.filter(like="non_steady_state_outlier").sum(1).to_numpy() > 0
     valid = ~nss
-    X = confound_matrix(cf)
+    X = confound_matrix(cf, gsr)
     B, *_ = np.linalg.lstsq(X[valid], P[valid], rcond=None)
     R = P - X @ B
     b, a = butter(2, [0.008, 0.09], btype="band", fs=1 / tr)
@@ -115,11 +116,13 @@ def process(dts, cfp, names, annots):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="只处理第一个会话并打印核对信息")
+    ap.add_argument("--no-gsr", action="store_true", help="不回归全脑信号（敏感性分析）")
     a = ap.parse_args()
+    out_dir = OUT / "nogsr" if a.no_gsr else OUT
     names = pd.read_csv(ROOT / "docs_B/glasser_parcel_table.csv").name.tolist()
     annots = load_annots()
     files = sorted(SRC.glob("sub-*/ses-*/func/*run-1_bold.dtseries.nii"))
-    OUT.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
     rows = {c: [] for c in ["full", "half1", "half2"]}
     metas = []
     for i, f in enumerate(files, 1):
@@ -127,7 +130,7 @@ def main():
         if not cfp.exists():
             continue
         sub, ses = f.parts[-4], f.parts[-3]
-        meta, feats = process(f, cfp, names, annots)
+        meta, feats = process(f, cfp, names, annots, gsr=not a.no_gsr)
         metas.append({"sub": sub, "ses": ses, **meta, "pass_qc": bool(feats)})
         for c, v in feats.items():
             rows[c].append([sub, ses, *v])
@@ -137,8 +140,8 @@ def main():
         if i % 25 == 0:
             print(i, "/", len(files), flush=True)
     for c, r in rows.items():
-        pd.DataFrame(r, columns=["sub", "ses", *names]).to_csv(OUT / f"C02_strength_{c}.csv", index=False)
-    pd.DataFrame(metas).to_csv(OUT / "C02_meta.csv", index=False)
+        pd.DataFrame(r, columns=["sub", "ses", *names]).to_csv(out_dir / f"C02_strength_{c}.csv", index=False)
+    pd.DataFrame(metas).to_csv(out_dir / "C02_meta.csv", index=False)
     print("sessions", len(metas), "pass", sum(m["pass_qc"] for m in metas))
 
 

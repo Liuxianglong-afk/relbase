@@ -1,0 +1,22 @@
+Features,Sample,n,"Median ICC(2,1)","Median ICC(3,1)","Median map r, self","Median map r, others",Identification,Chance,Discriminability
+"Parcel FC strength, halves",ABIDE I TC,278,0.2094,0.2088,0.1883,-0.001,0.3255,0.0036,0.7784
+"Parcel FC strength, halves",ABIDE I ASD,201,0.2379,0.2379,0.1964,0.0055,0.403,0.005,0.7933
+"Parcel FC strength, halves",ABIDE I all,479,0.2215,0.2211,0.1918,0.0007,0.3027,0.0021,0.7852
+"Parcel FC strength, halves",ABIDE II TC,219,0.2212,0.2204,0.1971,-0.0016,0.3927,0.0046,0.7846
+"Parcel FC strength, halves",ABIDE II ASD,135,0.1868,0.1868,0.1786,0.0051,0.3778,0.0074,0.7381
+"Parcel FC strength, halves",ABIDE II all,354,0.2064,0.2063,0.1914,0.0003,0.3446,0.0028,0.7688
+"Parcel FC strength, runs",pooled TC,65,0.2457,0.2473,0.1875,-0.0032,0.3769,0.0154,0.7785
+"Parcel FC strength, runs",pooled ASD,43,0.2311,0.2324,0.2059,0.0189,0.407,0.0233,0.7734
+"Parcel FC strength, runs",pooled all,108,0.2421,0.2434,0.1892,0.0026,0.3472,0.0093,0.7794
+"Network FC, halves",ABIDE I TC,278,0.2834,0.2827,0.2897,-0.0045,0.1709,0.0036,0.8411
+"Network FC, halves",ABIDE I ASD,201,0.3038,0.3041,0.3215,0.0132,0.2861,0.005,0.8354
+"Network FC, halves",ABIDE I all,479,0.2961,0.2961,0.3047,-0.0003,0.1795,0.0021,0.8402
+"Network FC, halves",ABIDE II TC,219,0.2853,0.2844,0.3078,-0.006,0.2763,0.0046,0.8346
+"Network FC, halves",ABIDE II ASD,135,0.2893,0.2892,0.2959,0.0114,0.2333,0.0074,0.8249
+"Network FC, halves",ABIDE II all,354,0.2802,0.2799,0.3039,-0.0022,0.209,0.0028,0.8329
+"Edges, halves",ABIDE I TC,278,—,—,0.252,-0.0016,0.9964,0.0036,0.9718
+"Edges, halves",ABIDE I ASD,201,—,—,0.2498,0.0044,0.9776,0.005,0.9573
+"Edges, halves",ABIDE I all,479,—,—,0.2517,0.0001,0.9885,0.0021,0.9663
+"Edges, halves",ABIDE II TC,219,—,—,0.2612,-0.002,0.9909,0.0046,0.9523
+"Edges, halves",ABIDE II ASD,135,—,—,0.2498,0.005,0.9889,0.0074,0.9139
+"Edges, halves",ABIDE II all,354,—,—,0.2589,-0.0002,0.9873,0.0028,0.9347

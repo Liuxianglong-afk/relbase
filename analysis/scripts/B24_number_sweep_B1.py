@@ -15,7 +15,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.stdout.reconfigure(encoding="utf-8")
-DOCS = ["B1_draft_v0.1_abstract_legends.md", "B1_draft_v0.1_intro_discussion.md", "B1_draft_v0.1_methods_results.md"]
+DOCS = ["B1_draft_v0.1_abstract_legends.md", "B1_draft_v0.1_intro_discussion.md", "B1_draft_v0.1_methods_results.md", "B1_supplementary_methods_v0.1.md", "B1_supplementary_results_v0.1.md", "B1_cover_letter_v0.1.md"]
 
 
 def leaves(o):

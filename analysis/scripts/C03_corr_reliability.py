@@ -13,7 +13,8 @@
   f. 原始 FC 强度（未建模）的同样比较
   g. 按重测间隔分层（≤ 60 天 vs > 60 天）
 输出: results/C03_corr_reliability.json
-用法: .venv_B/Scripts/python.exe -I scripts/C03_corr_reliability.py
+用法: .venv_B/Scripts/python.exe -I scripts/C03_corr_reliability.py [--variant nogsr]
+  --variant nogsr: 读 derivatives/corr/nogsr/（不回归全脑信号），输出 results/C03_corr_reliability_nogsr.json
 """
 import datetime as dt
 import json
@@ -57,7 +58,12 @@ def boot_diff(fn_between, fn_within, n, nboot=1000):
 
 
 def main():
-    out = {"generated": dt.datetime.now().isoformat(timespec="seconds"), "script": "scripts/C03_corr_reliability.py"}
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--variant", default="main")
+    variant = ap.parse_args().variant
+    D = ROOT / "derivatives/corr" if variant == "main" else ROOT / "derivatives/corr" / variant
+    out = {"generated": dt.datetime.now().isoformat(timespec="seconds"), "script": "scripts/C03_corr_reliability.py", "variant": variant}
     meta = pd.read_csv(D / "C02_meta.csv")
     feat = {c: pd.read_csv(D / f"C02_strength_{c}.csv") for c in ["full", "half1", "half2"]}
     cols = [c for c in feat["full"].columns[2:] if c not in ("L_H_ROI", "R_H_ROI")]
@@ -159,7 +165,7 @@ def main():
         if len(sub) >= 20:
             out[lab] = compare(sub)
             print(lab, out[lab], flush=True)
-    (ROOT / "results/C03_corr_reliability.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    (ROOT / ("results/C03_corr_reliability.json" if variant == "main" else f"results/C03_corr_reliability_{variant}.json")).write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":

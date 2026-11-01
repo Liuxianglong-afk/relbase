@@ -1,0 +1,350 @@
+{
+  "generated": "2026-11-02T01:12:09",
+  "script": "scripts/B30_relbase_identification_subtypes.py",
+  "identification": {
+    "ABIDE I TC": {
+      "n": 278,
+      "observed_identification": 0.3255,
+      "observed_discriminability": 0.7784,
+      "s=0.0": {
+        "identification_mean": 0.3018,
+        "identification_q025_q975": [
+          0.257,
+          0.3436
+        ],
+        "discriminability_mean": 0.8427,
+        "discriminability_q025_q975": [
+          0.8124,
+          0.8604
+        ]
+      },
+      "s=0.5": {
+        "identification_mean": 0.0658,
+        "identification_q025_q975": [
+          0.0465,
+          0.09
+        ],
+        "discriminability_mean": 0.7067,
+        "discriminability_q025_q975": [
+          0.6769,
+          0.734
+        ]
+      }
+    },
+    "ABIDE I ASD": {
+      "n": 201,
+      "observed_identification": 0.403,
+      "observed_discriminability": 0.7933,
+      "s=0.0": {
+        "identification_mean": 0.3447,
+        "identification_q025_q975": [
+          0.2882,
+          0.4009
+        ],
+        "discriminability_mean": 0.8429,
+        "discriminability_q025_q975": [
+          0.8208,
+          0.8665
+        ]
+      },
+      "s=0.5": {
+        "identification_mean": 0.0838,
+        "identification_q025_q975": [
+          0.0472,
+          0.1146
+        ],
+        "discriminability_mean": 0.7085,
+        "discriminability_q025_q975": [
+          0.68,
+          0.7324
+        ]
+      }
+    },
+    "ABIDE II TC": {
+      "n": 219,
+      "observed_identification": 0.3927,
+      "observed_discriminability": 0.7846,
+      "s=0.0": {
+        "identification_mean": 0.3378,
+        "identification_q025_q975": [
+          0.2821,
+          0.3846
+        ],
+        "discriminability_mean": 0.8448,
+        "discriminability_q025_q975": [
+          0.8155,
+          0.8677
+        ]
+      },
+      "s=0.5": {
+        "identification_mean": 0.0804,
+        "identification_q025_q975": [
+          0.0525,
+          0.108
+        ],
+        "discriminability_mean": 0.7101,
+        "discriminability_q025_q975": [
+          0.6809,
+          0.7387
+        ]
+      }
+    },
+    "ABIDE II ASD": {
+      "n": 135,
+      "observed_identification": 0.3778,
+      "observed_discriminability": 0.7381,
+      "s=0.0": {
+        "identification_mean": 0.3814,
+        "identification_q025_q975": [
+          0.3217,
+          0.4414
+        ],
+        "discriminability_mean": 0.8405,
+        "discriminability_q025_q975": [
+          0.8191,
+          0.867
+        ]
+      },
+      "s=0.5": {
+        "identification_mean": 0.099,
+        "identification_q025_q975": [
+          0.0589,
+          0.1445
+        ],
+        "discriminability_mean": 0.7054,
+        "discriminability_q025_q975": [
+          0.6799,
+          0.7359
+        ]
+      }
+    }
+  },
+  "subtypes": {
+    "ASD_abide1": {
+      "n": 201,
+      "null_mean": 0.01509,
+      "null_q95": 0.01597,
+      "K=1": {
+        "0.05": {
+          "mean_jaccard": 0.01648,
+          "power": 0.715
+        },
+        "0.1": {
+          "mean_jaccard": 0.01796,
+          "power": 0.985
+        },
+        "0.2": {
+          "mean_jaccard": 0.02113,
+          "power": 1.0
+        },
+        "0.3": {
+          "mean_jaccard": 0.02528,
+          "power": 1.0
+        },
+        "0.5": {
+          "mean_jaccard": 0.03397,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.06654,
+          "power": 1.0
+        },
+        "min_s_power80": 0.066
+      },
+      "K=2": {
+        "0.05": {
+          "mean_jaccard": 0.01579,
+          "power": 0.355
+        },
+        "0.1": {
+          "mean_jaccard": 0.01646,
+          "power": 0.685
+        },
+        "0.2": {
+          "mean_jaccard": 0.01806,
+          "power": 0.985
+        },
+        "0.3": {
+          "mean_jaccard": 0.01969,
+          "power": 1.0
+        },
+        "0.5": {
+          "mean_jaccard": 0.0243,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.04004,
+          "power": 1.0
+        },
+        "min_s_power80": 0.138
+      },
+      "K=3": {
+        "0.05": {
+          "mean_jaccard": 0.01559,
+          "power": 0.27
+        },
+        "0.1": {
+          "mean_jaccard": 0.01608,
+          "power": 0.57
+        },
+        "0.2": {
+          "mean_jaccard": 0.01706,
+          "power": 0.855
+        },
+        "0.3": {
+          "mean_jaccard": 0.0183,
+          "power": 0.995
+        },
+        "0.5": {
+          "mean_jaccard": 0.02111,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.03135,
+          "power": 1.0
+        },
+        "min_s_power80": 0.181
+      },
+      "K=5": {
+        "0.05": {
+          "mean_jaccard": 0.01534,
+          "power": 0.18
+        },
+        "0.1": {
+          "mean_jaccard": 0.01564,
+          "power": 0.285
+        },
+        "0.2": {
+          "mean_jaccard": 0.01634,
+          "power": 0.68
+        },
+        "0.3": {
+          "mean_jaccard": 0.01699,
+          "power": 0.905
+        },
+        "0.5": {
+          "mean_jaccard": 0.01863,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.02457,
+          "power": 1.0
+        },
+        "min_s_power80": 0.253
+      }
+    },
+    "ASD_abide2": {
+      "n": 135,
+      "null_mean": 0.01797,
+      "null_q95": 0.01913,
+      "K=1": {
+        "0.05": {
+          "mean_jaccard": 0.01934,
+          "power": 0.555
+        },
+        "0.1": {
+          "mean_jaccard": 0.02116,
+          "power": 0.935
+        },
+        "0.2": {
+          "mean_jaccard": 0.02467,
+          "power": 1.0
+        },
+        "0.3": {
+          "mean_jaccard": 0.02867,
+          "power": 1.0
+        },
+        "0.5": {
+          "mean_jaccard": 0.03763,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.07347,
+          "power": 1.0
+        },
+        "min_s_power80": 0.082
+      },
+      "K=2": {
+        "0.05": {
+          "mean_jaccard": 0.0187,
+          "power": 0.255
+        },
+        "0.1": {
+          "mean_jaccard": 0.01953,
+          "power": 0.64
+        },
+        "0.2": {
+          "mean_jaccard": 0.02118,
+          "power": 0.96
+        },
+        "0.3": {
+          "mean_jaccard": 0.02332,
+          "power": 1.0
+        },
+        "0.5": {
+          "mean_jaccard": 0.02781,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.04449,
+          "power": 1.0
+        },
+        "min_s_power80": 0.15
+      },
+      "K=3": {
+        "0.05": {
+          "mean_jaccard": 0.01849,
+          "power": 0.2
+        },
+        "0.1": {
+          "mean_jaccard": 0.01904,
+          "power": 0.43
+        },
+        "0.2": {
+          "mean_jaccard": 0.02023,
+          "power": 0.815
+        },
+        "0.3": {
+          "mean_jaccard": 0.02138,
+          "power": 0.975
+        },
+        "0.5": {
+          "mean_jaccard": 0.02445,
+          "power": 1.0
+        },
+        "1.0": {
+          "mean_jaccard": 0.03531,
+          "power": 1.0
+        },
+        "min_s_power80": 0.196
+      },
+      "K=5": {
+        "0.05": {
+          "mean_jaccard": 0.01821,
+          "power": 0.125
+        },
+        "0.1": {
+          "mean_jaccard": 0.01862,
+          "power": 0.265
+        },
+        "0.2": {
+          "mean_jaccard": 0.01932,
+          "power": 0.535
+        },
+        "0.3": {
+          "mean_jaccard": 0.02011,
+          "power": 0.83
+        },
+        "0.5": {
+          "mean_jaccard": 0.02173,
+          "power": 0.985
+        },
+        "1.0": {
+          "mean_jaccard": 0.02805,
+          "power": 1.0
+        },
+        "min_s_power80": 0.29
+      }
+    }
+  }
+}
