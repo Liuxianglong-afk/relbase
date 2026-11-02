@@ -17,8 +17,11 @@ keywords:
   - functional connectivity
   - heterogeneity
   - autism
-doi: "10.5281/zenodo.23874913"
+doi: "10.5281/zenodo.23891148"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23891148"
+    description: "Archived release v0.1.2"
   - type: doi
     value: "10.5281/zenodo.23874913"
     description: "All versions"
