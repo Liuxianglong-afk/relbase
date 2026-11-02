@@ -19,6 +19,11 @@ sys.stdout.reconfigure(encoding="utf-8")
 COH = {"abide1": "ABIDE I", "abide2": "ABIDE II", "ABIDE_I": "ABIDE I", "ABIDE_II": "ABIDE II"}
 
 
+def fmt_p(p):
+    """P 值写法与主稿一致：< .001，否则三位小数、无前导 0。"""
+    return "< .001" if p < 0.001 else "= " + f"{p:.3f}".lstrip("0")
+
+
 def load(name):
     return json.loads((R / name).read_text(encoding="utf-8"))
 
@@ -47,7 +52,7 @@ def main():
                            {"Document": "Shared preprocessing plan", "Frozen at": fr["frozen_at"],
                             "SHA-256 recorded at freezing": fr["files"]["protocol_B_rsfMRI共用流程.md"]["sha256"], "SHA-256 of archived copy": "", "Match": ""}])
     print("freeze hash match:", rec == arch, flush=True)
-    tabs = {"S0_freeze": ("Table S1. Hashes of the frozen analysis plans. ASD result files present at freezing: "
+    tabs = {"S0_freeze": ("Table S1. Hashes of the frozen analysis plans. ‖ ASD result files present at freezing: "
                           + (", ".join(fr["asd_result_files_present"]) or "none") + ".", freeze)}
 
     t1s = pd.read_csv(T / "T1s_demographics_all985.csv")
@@ -65,7 +70,7 @@ def main():
         for lab, nm in [("all_pairs", "All pairs"), ("same_site_pairs", "Same-site pairs"), ("between_site_pairs", "Between-site pairs")]:
             v = d[lab]
             rows.append({"Cohort": COH[c], "Pairs": nm, "ASD": v["ASD"], "TC": v["TC"], "ASD − TC": v["ASD_minus_TC"], "P (within-site permutation)": v["perm_p_two_sided"]})
-    tabs["S3_site_pairs"] = ("Table S4. Mean pairwise Jaccard similarity of extreme deviations (full-length data, |z| > 2) by site pairing; 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
+    tabs["S3_site_pairs"] = ("Table S4. Mean pairwise Jaccard similarity of extreme deviations by site pairing. ‖ Full-length data, |z| > 2; P from 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
 
     b25, b26 = load("B25_reviewer_analyses.json"), load("B26_relbase_empirical_marginal.json")
     rows = []
@@ -80,19 +85,21 @@ def main():
                          "Between-site Jaccard": v["jaccard_between_site"],
                          "Gaussian baseline (s = 0)": v["null_mean"], "P vs Gaussian": v["p_one_sided_vs_s0"],
                          "Empirical baseline (s = 0)": e["null_mean"], "P vs empirical": e["p_one_sided_vs_s0"]})
-    tabs["S4_thresholds"] = ("Table S5. Extreme-threshold sensitivity: P2 positive agreement and its chance level (halves permuted among participants within site), "
-                             "and between-site overlap against the fully individual baseline under the Gaussian and the empirical-marginal model (one-sided Monte Carlo P).",
+    tabs["S4_thresholds"] = ("Table S5. Sensitivity of positive agreement and between-site overlap to the extreme-deviation threshold. ‖ P2, positive agreement, with its chance level "
+                             "from halves permuted among participants within site; between-site overlap compared with the fully individual baseline under the Gaussian "
+                             "and the empirical-marginal model (one-sided Monte Carlo P).",
                              pd.DataFrame(rows))
 
     st = b25["d_age"]["tertile_median_icc"]
-    tabs["S5_age"] = ("Table S6. Median split-half ICC by age tertile (cut points {} and {} years); 95% CI from 2,000 bootstrap resamples, mean of bounds over four seeds. "
-                      "Linear model of split-half map correlation: age β = {} per year (95% CI {}–{}), P = {}; age × group P = {}.".format(
-                          *b25["d_age"]["age_tertile_cuts"], b25["d_age"]["beta_age_per_year"], *b25["d_age"]["ci95"], b25["d_age"]["p_age"], b25["d_age"]["p_age_x_group"]),
+    tabs["S5_age"] = ("Table S6. Median split-half ICC by age tertile. ‖ Tertile cut points {} and {} years; 95% CI from 2,000 bootstrap resamples, mean of bounds over four seeds. "
+                      "In a linear model of split-half map correlation, age β = {} per year (95% CI {}–{}), P {}; age × group interaction P {}.".format(
+                          *b25["d_age"]["age_tertile_cuts"], b25["d_age"]["beta_age_per_year"], *b25["d_age"]["ci95"], fmt_p(b25["d_age"]["p_age"]),
+                          fmt_p(b25["d_age"]["p_age_x_group"])),
                       pd.DataFrame([{"Tertile": k.split("_")[0], "Group": k.split("_")[1], "n": v["n"], "Age range, y": f"{v['age_range'][0]}–{v['age_range'][1]}",
                                      "Median ICC": v["median_icc"], "95% CI": f"{v['ci95'][0]}–{v['ci95'][1]}"} for k, v in st.items()]))
 
     a = b25["a_sb_validation_between_run"]
-    tabs["S6_sb"] = ("Table S7. Check of the Spearman–Brown assumption in the between-run subsample: parcel ICCs of halves of the full series projected to the run length.",
+    tabs["S6_sb"] = ("Table S7. Check of the Spearman–Brown assumption in the between-run subsample. ‖ Parcel ICCs of halves of the full series projected to the run length.",
                      pd.DataFrame([{"Group": g, "n": v["n"], "Half length, s": v["median_sec_half"], "Run length, s": v["median_sec_run"],
                                     "Median ICC, halves": v["median_icc_half"], "Predicted, runs": v["predicted_median_icc_run"],
                                     "Observed, runs": v["observed_median_icc_run"], "Observed − predicted (95% CI)":
@@ -107,7 +114,7 @@ def main():
         c, g = split(k)
         rows.append({"Model": "Empirical marginal", "Cohort": c, "n": v["n"], **{f"s = {s}": p for s, p in v["power_by_s"].items() if float(s) <= 0.12},
                      "s at 80% power": v["min_detectable_s_power80"]})
-    tabs["S7_power"] = ("Table S8. Power of the overlap test (ASD groups, |z| > 2, one-sided α = .05) by true shared fraction s.", pd.DataFrame(rows))
+    tabs["S7_power"] = ("Table S8. Power of the overlap test by true shared fraction s. ‖ ASD groups, |z| > 2, one-sided α = .05.", pd.DataFrame(rows))
 
     b21 = load("B21_relbase.json")
     cal = b26["calibration"]
@@ -126,7 +133,7 @@ def main():
                      "Edges ICC ≥ 0.5": v["a_share_icc_ge_0.5"], "P2": v["b_p2"], "P2 chance": v["b_p2_chance"],
                      "Max same-sign prevalence": v["c_max_prevalence_full"], "Extreme rate": v["extreme_rate_full"],
                      "ICC, counts by parcel": v["d_region_count_median_icc"], "ICC, counts by network": v["d_network_count_median_icc"]})
-    tabs["S10_edges"] = ("Table S10. Edge-level deviations (71,631 edges; linear normative model). Median ICC 95% CI from 200 bootstrap resamples per seed, mean of bounds over four seeds.", pd.DataFrame(rows))
+    tabs["S10_edges"] = ("Table S10. Reliability of edge-level deviations. ‖ 71,631 edges; linear normative model. 95% CI of the median ICC from 200 bootstrap resamples per seed, mean of bounds over four seeds.", pd.DataFrame(rows))
     rows = []
     for c in ["abide1", "abide2"]:
         j = b28["e_between_site_jaccard_ASD_TC"][c]
@@ -134,8 +141,8 @@ def main():
                      "ASD − TC": f"{j['between_site'][0] - j['between_site'][1]:.5f}", "P": f"{j['between_site_perm_p']:.4f}"})
         for lab, src in [("Edges, fixed count", b28b[c]["edges"]), ("Edges, fixed count, symmetric scoring", b28c[c]), ("Parcels, fixed count", b28b[c]["parcels"])]:
             rows.append({"Cohort": COH[c], "Comparison": lab, "ASD": f"{src['between_site_ASD']:.5f}", "TC": f"{src['between_site_TC']:.5f}", "ASD − TC": f"{src['diff']:.5f}", "P": f"{src['perm_p']:.4f}"})
-    tabs["S11_overlap_counts"] = ("Table S11. Between-site overlap of extreme deviations (mean Jaccard) with a threshold and with a fixed number of extremes per participant "
-                                  f"({b28b['abide1']['edges']['k']} edges or {b28b['abide1']['parcels']['k']} parcels); P from 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
+    tabs["S11_overlap_counts"] = ("Table S11. Between-site overlap of extreme deviations with a threshold and with a fixed number of extremes per participant. ‖ Mean Jaccard similarity; "
+                                  f"fixed number, {b28b['abide1']['edges']['k']:,} edges or {b28b['abide1']['parcels']['k']} parcels per participant; P from 10,000 permutations of diagnosis within site.", pd.DataFrame(rows))
 
     c03 = load("C03_corr_reliability.json")
     rows = []
@@ -152,7 +159,8 @@ def main():
                  "Difference (95% CI)": f"{ng['between_minus_within']} ({ng['ci95_between_minus_within'][0]} to {ng['ci95_between_minus_within'][1]})",
                  "P2 within": ng["p2_within"], "P2 between": ng["p2_between_equal_length"]})
     n = c03["n"]
-    tabs["S12_corr_retest"] = ("Table S12. CoRR test–retest comparison: median ICC of 377 parcel FC strength measures within a session (two halves, mean of both sessions) "
+    tabs["S12_corr_retest"] = ("Table S12. Within- and between-session reliability in the CoRR test–retest sample. ‖ Median ICC of 377 parcel FC strength measures within a session "
+                                "(two halves, mean of both sessions) "
                                f"and between sessions. Reference sample {n['reference_ses1']} first sessions from {n['sites_reference']} sites; "
                                f"retest interval median {n['retest_days_median_iqr'][0]} days (IQR {n['retest_days_median_iqr'][1]}–{n['retest_days_median_iqr'][2]}). "
                                "Difference = between (equal length) − within; participant-level bootstrap, 1,000 resamples per seed, mean of bounds over four seeds. "
@@ -165,9 +173,9 @@ def main():
             rows.append({"Features": flab, "Sample": u, "n": v["n"], "Median ICC(2,1)": v.get("median_icc21", "—"), "Median ICC(3,1)": v.get("median_icc31", "—"),
                          "Median map r, self": v["median_r_self"], "Median map r, others": v["median_r_other"],
                          "Identification": v["identification"], "Chance": v["chance"], "Discriminability": v["discriminability"]})
-    tabs["S13_multivariate"] = ("Table S13. Consistency ICC(3,1) and multivariate reliability of deviation maps. Identification: share of participants whose first-segment map "
+    tabs["S13_multivariate"] = ("Table S13. Consistency ICC(3,1) and multivariate reliability of deviation maps. ‖ Identification: share of participants whose first-segment map "
                                 "correlated best with their own second-segment map among all participants in the sample (mean of both directions); "
-                                "discriminability (chance 0.5) after Bridgeford et al.", pd.DataFrame(rows))
+                                "discriminability (chance 0.5) as defined by Bridgeford et al. [@bridgeford2021].", pd.DataFrame(rows))
     b30 = load("B30_relbase_identification_subtypes.json")
     rows = []
     for u, v in b30["identification"].items():
@@ -177,7 +185,7 @@ def main():
                          "Identification, observed": v["observed_identification"],
                          "Discriminability, simulated (95% range)": f"{v[s_]['discriminability_mean']:.4f} ({v[s_]['discriminability_q025_q975'][0]:.4f}–{v[s_]['discriminability_q025_q975'][1]:.4f})",
                          "Discriminability, observed": v["observed_discriminability"]})
-    tabs["S14a_identification_sim"] = ("Table S14a. Identification expected from parcel reliability alone: halves simulated with relbase at the observed TC split-half reliability of each parcel "
+    tabs["S14a_identification_sim"] = ("Table S14a. Identification expected from parcel reliability alone. ‖ Halves simulated with relbase at the observed TC split-half reliability of each parcel "
                                        "and the observed distribution of deviation scores (40 replicates).", pd.DataFrame(rows))
     rows = []
     for g, v in b30["subtypes"].items():
@@ -188,13 +196,15 @@ def main():
                     r[f"Power, s = {s_}"] = w["power"]
             r["Smallest s with 80% power"] = v[k]["min_s_power80"] if v[k]["min_s_power80"] is not None else "> 1"
             rows.append(r)
-    tabs["S14b_subtypes"] = ("Table S14b. Power of the between-person overlap test (one-sided, α = .05 against fully individual true deviations) when the group consists of K equal-sized subtypes, "
-                             "each with its own shared pattern; s is the fraction of true variance shared within a subtype. Full-length reliability and the group's observed distribution of deviation scores; "
+    tabs["S14b_subtypes"] = ("Table S14b. Power of the between-person overlap test when the group consists of K equal-sized subtypes. ‖ One-sided test at α = .05 against fully "
+                             "individual true deviations; each subtype has its own shared pattern, and s is the fraction of true variance shared within a subtype. Full-length reliability and the group's observed distribution of deviation scores; "
                              "200 replicates per cell, null from 1,000 replicates.", pd.DataFrame(rows))
 
     for k, (cap, df) in tabs.items():
         df.to_csv(T / f"{k}.csv", index=False, encoding="utf-8")
-        out.append(f"{cap}\n\n{md(df)}\n")
+        title, _, note = cap.partition(" ‖ ")
+        note = f"Note. {note} Other abbreviations as in the main article." if note else "Note. Abbreviations as in the main article."
+        out.append(f"{title}\n\n{md(df)}\n\n{note}\n")
     head = "<!-- 由 scripts/B27_supplementary_B1.py 生成，勿手改；重跑脚本更新。 -->\n\n# Supplementary tables\n\n"
     (ROOT / "manuscript_B1/B1_supplementary_tables_v0.1.md").write_text(head + "\n".join(out), encoding="utf-8")
     print("tables:", len(tabs))

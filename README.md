@@ -44,7 +44,7 @@ Overlap metrics (extremes are |z| > threshold, with sign):
 
 Requires Python ≥ 3.9 and NumPy. Install the archived release or the current version from GitHub:
 
-    pip install git+https://github.com/Liuxianglong-afk/relbase.git@v0.1.0
+    pip install git+https://github.com/Liuxianglong-afk/relbase.git@v0.1.1
     pip install git+https://github.com/Liuxianglong-afk/relbase.git
 
 or, from a local copy of this folder, `pip install .`.
@@ -104,7 +104,7 @@ relbase; see `analysis/README.md`.
 
 If you use relbase, please cite the archived software release and the article that introduced it:
 
-- Software: Liu X. relbase (version 0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23874914
+- Software: Liu X. relbase (version 0.1.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23874913
 - Article: Liu X, et al. Low reliability of individual normative deviations in resting-state functional connectivity limits inferences about heterogeneity in autism. <Journal>, <year>. <DOI>
 
 `CITATION.cff` holds the same information in machine-readable form (GitHub shows it as "Cite this repository").

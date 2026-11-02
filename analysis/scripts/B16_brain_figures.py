@@ -6,7 +6,7 @@ F4 个体示例: 预设选择规则 = ABIDE I 中两半偏离图空间 r 最接�
    每人 2 行（前半、后半）× 4 视角，z 截断于 ±3，双色发散色阶、中点灰色；标题注明各半极端偏离数与两半同号重复数。
    被选被试的编号只写入 logs/B16_selected_examples_LOCAL_ONLY.json，不出现在图上。
 F5 达到 ICC 0.5 所需时长: 按分区，用两个队列 TC 的 ICC 均值与 TC 半长中位秒数做 Spearman–Brown 外推（分钟，截断于 60）。
-输出: figs_B1/F3_icc_brainmap.png/.pdf、F4_individual_example.png/.pdf、F5_minutes_needed.png/.pdf；results/B16_brain_figures.json
+输出: figs_B1/F3_icc_brainmap.png/.pdf、F4_individual_example.png/.pdf、F6_minutes_needed.png/.pdf；results/B16_brain_figures.json
 用法: .venv_B/Scripts/python.exe -I scripts/B16_brain_figures.py
 """
 import datetime as dt
@@ -149,7 +149,7 @@ def main():
     fig, axes = grid(1, ["TC\n(both cohorts)"], "Scan time needed for ICC = 0.5 (Spearman–Brown, minutes after censoring)")
     draw_row(fig, axes[0], minutes.to_dict(), SEQ.reversed(), 0, 30)
     colorbar(fig, [0.35, 0.22, 0.45, 0.045], SEQ.reversed(), 0, 30, "Minutes (capped at 30 for display)", [0, 5, 10, 15, 20, 25, 30])
-    save(fig, "F5_minutes_needed")
+    save(fig, "F6_minutes_needed")
     out["F5"] = {"half_sec_used": round(float(L), 1), "median_minutes": round(float(minutes.median()), 1),
                  "q10_q90_minutes": [round(float(x), 1) for x in minutes.quantile([0.1, 0.9])],
                  "share_parcels_le_10min": round(float((minutes <= 10).mean()), 3)}

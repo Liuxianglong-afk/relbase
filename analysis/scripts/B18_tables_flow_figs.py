@@ -6,7 +6,7 @@ F1: 表型表人数 → DCAN 衍生数据齐全 → 质控排除（按原因）�
 F2: (a) TC 全长 z' 的直方图与 N(0,1) 及留一理论分布；(b) 各站点 z' 标准差：观察值 vs 留一理论值。
 F6: (a) 两半偏离图空间 r ~ 每半秒数（散点 + GAM 预测）；(b) 结构–功能 ρ 的分布（TC、ASD）；(c) 每人可重复极端数的分布。
 配色: TC #2a78d6、ASD #eb6834（dataviz 默认分类色 1–2，validate_palette.js 浅色模式全部通过）。
-输出: tables_B1/T1_demographics.csv、T1s_demographics_all985.csv；figs_B1/F1_flow、F2_calibration、F6_secondary（.png 300 dpi + .pdf）；
+输出: tables_B1/T1_demographics.csv、T1s_demographics_all985.csv；figs_B1/F1_flow、F2_calibration、F5_secondary（.png 300 dpi + .pdf）；
       results/B18_tables_flow.json
 用法: .venv_B/Scripts/python.exe -I scripts/B18_tables_flow_figs.py
 """
@@ -68,7 +68,7 @@ def box(ax, x, y, w, h, text, fc="#f4f3ef"):
 
 
 def arrow(ax, x0, y0, x1, y1):
-    ax.annotate("", (x1, y1), (x0, y0), arrowprops=dict(arrowstyle="-|>", color=MUTED, lw=0.8))
+    ax.annotate("", (x1, y1), (x0, y0), arrowprops=dict(arrowstyle="-|>", color=MUTED, lw=0.8, shrinkA=0, shrinkB=0))
 
 
 def save(fig, stem):
@@ -105,25 +105,32 @@ def main():
     fig, ax = plt.subplots(figsize=(6.6, 5.2))
     ax.set_axis_off(); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
     ph_n, dc = flow["pheno"], flow["dcan_complete"]
-    box(ax, 0.38, 0.93, 0.6, 0.075, f"ABIDE I and II phenotypic records\nABIDE I n = {ph_n['abide1']}; ABIDE II n = {ph_n['abide2']}")
-    box(ax, 0.84, 0.855, 0.3, 0.07, f"No complete DCAN derivatives\n(n = {flow['no_complete_dcan']})")
-    arrow(ax, 0.38, 0.855, 0.69, 0.855)
-    box(ax, 0.38, 0.78, 0.6, 0.075, f"DCAN (ABCD-HCP) derivatives complete\nABIDE I n = {dc['abide1']}; ABIDE II n = {dc['abide2']}")
+    # 两栏：主流程 x = 0.05–0.55，排除框 x = 0.63–0.97；框外 pad 0.01，栏间留白 ≥ 0.06，横向箭头止于排除框左缘
+    XM, WM, XR, WR, PAD = 0.30, 0.50, 0.80, 0.34, 0.01
+    main = {"pheno": (0.93, 0.075), "dcan": (0.78, 0.075), "qc": (0.54, 0.075), "ana": (0.22, 0.12), "run": (0.05, 0.075)}
+
+    def mbox(k, text, **kw):
+        box(ax, XM, main[k][0], WM, main[k][1], text, **kw)
+
+    mbox("pheno", f"ABIDE I and II phenotypic records\nABIDE I n = {ph_n['abide1']}; ABIDE II n = {ph_n['abide2']}")
+    box(ax, XR, 0.855, WR, 0.07, f"No complete DCAN derivatives\n(n = {flow['no_complete_dcan']})")
+    mbox("dcan", f"DCAN (ABCD-HCP) derivatives complete\nABIDE I n = {dc['abide1']}; ABIDE II n = {dc['abide2']}")
     ex = flow["excluded_by_reason"]
     lab = {"remain_sec_fd20<240": "< 240 s retained after\ncensoring (FD > 0.2 mm)", "bad_parcels": "Parcels without signal"}
     ex_txt = "\n".join(f"{lab.get(k, k)}: {v}" for k, v in ex.items())
-    box(ax, 0.84, 0.66, 0.3, 0.15, f"Excluded (n = {sum(ex.values())})\n{ex_txt}")
+    box(ax, XR, 0.66, WR, 0.15, f"Excluded (n = {sum(ex.values())})\n{ex_txt}")
     qp = flow["qc_pass"]
-    box(ax, 0.38, 0.54, 0.6, 0.075, f"Passed QC (FD ≤ 0.2 mm, ≥ 240 s retained)\nABIDE I n = {qp['abide1']}; ABIDE II n = {qp['abide2']}")
-    box(ax, 0.84, 0.40, 0.3, 0.1, f"Sites with < 10 TC\n(n = {flow['small_site_excluded']})\nsensitivity analyses only")
+    mbox("qc", f"Passed quality control (≥ 240 s retained)\nABIDE I n = {qp['abide1']}; ABIDE II n = {qp['abide2']}")
+    box(ax, XR, 0.40, WR, 0.1, f"Sites with < 10 TC\n(n = {flow['small_site_excluded']})\nsensitivity analyses only")
     an = flow["analysis"]
-    box(ax, 0.38, 0.22, 0.6, 0.12, f"Primary analysis (19 sites)\nABIDE I: ASD {an['abide1_ASD']}, TC {an['abide1_TC']}\n"
+    mbox("ana", f"Primary analysis (19 sites)\nABIDE I: ASD {an['abide1_ASD']}, TC {an['abide1_TC']}\n"
         f"ABIDE II: ASD {an['abide2_ASD']}, TC {an['abide2_TC']}", fc="#e9f1fb")
-    box(ax, 0.38, 0.05, 0.6, 0.07, f"Between-run subsample: two runs of equal length, n = {n_run}")
-    for y0, y1 in [(0.892, 0.818), (0.742, 0.578), (0.502, 0.28), (0.16, 0.085)]:
-        arrow(ax, 0.38, y0, 0.38, y1)
-    arrow(ax, 0.38, 0.66, 0.69, 0.66)
-    arrow(ax, 0.38, 0.40, 0.69, 0.40)
+    mbox("run", f"Between-run subsample\ntwo runs of equal length, n = {n_run}")
+    order = ["pheno", "dcan", "qc", "ana", "run"]
+    for a, b in zip(order, order[1:]):
+        arrow(ax, XM, main[a][0] - main[a][1] / 2 - PAD, XM, main[b][0] + main[b][1] / 2 + PAD)
+    for y in (0.855, 0.66, 0.40):
+        arrow(ax, XM, y, XR - WR / 2 - PAD, y)
     save(fig, "F1_flow")
 
     # F2 校准
@@ -188,7 +195,7 @@ def main():
     axs[2].text(0.5, 0.97, "light = full data · dark = both halves\nwhiskers 5–95th pct · numbers = medians", transform=axs[2].transAxes,
                 ha="center", va="top", fontsize=6.2, color=MUTED)
     fig.tight_layout()
-    save(fig, "F6_secondary")
+    save(fig, "F5_secondary")
     out["F6"] = {"median_n_extreme_full": {g: float(np.median(n_full[dxv == c])) for g, c in [("TC", 2), ("ASD", 1)]},
                  "median_n_reproduced": {g: float(np.median(n_rep[dxv == c])) for g, c in [("TC", 2), ("ASD", 1)]},
                  "share_extremes_reproduced_overall": round(float(n_rep.sum() / n_full.sum()), 4)}
