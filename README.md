@@ -104,7 +104,7 @@ relbase; see `analysis/README.md`.
 
 If you use relbase, please cite the archived software release and the article that introduced it:
 
-- Software: Liu X. relbase (version 0.1.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23874913
+- Software: Liu X. relbase (version 0.1.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23889287
 - Article: Liu X, et al. Low reliability of individual normative deviations in resting-state functional connectivity limits inferences about heterogeneity in autism. <Journal>, <year>. <DOI>
 
 `CITATION.cff` holds the same information in machine-readable form (GitHub shows it as "Cite this repository").
