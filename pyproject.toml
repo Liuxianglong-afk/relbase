@@ -14,7 +14,7 @@ authors = [{name = "Xianglong Liu"}]
 
 [project.urls]
 Repository = "https://github.com/Liuxianglong-afk/relbase"
-Archive = "https://doi.org/10.5281/zenodo.<record>"
+Archive = "https://doi.org/10.5281/zenodo.23874914"
 
 [tool.setuptools]
 packages = ["relbase"]
