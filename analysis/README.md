@@ -2,7 +2,7 @@
 
 This folder holds the code, analysis plan and group-level results of the study that introduced relbase
 ("Low reliability of individual normative deviations in resting-state functional connectivity limits
-inferences about heterogeneity in autism"). It is a snapshot of the project at release v0.1.0;
+inferences about heterogeneity in autism"). It is a snapshot of the project at the release that contains it;
 `MANIFEST.tsv` lists every file with its SHA-256.
 
 ## Contents
@@ -42,7 +42,7 @@ Order:
 | 5 | B15, B17 | secondary endpoints S2/S4/S5, sensitivity analyses and S6 |
 | 6 | B16, B18, B19, B20f | figures and tables |
 | 7 | B20, B21, B22 | post hoc noise simulation, relbase validation and application, same- vs between-site overlap |
-| 8 | B25, B26, B28, B28b, B28c, B29, B30 | reviewer-oriented checks, empirical-marginal baseline, edge-level analyses, ICC(3,1) and multivariate reliability, subtype baseline |
+| 8 | B25, B26, B28, B28b, B28c, B29, B30 | additional checks, empirical-marginal baseline, edge-level analyses, ICC(3,1) and multivariate reliability, subtype baseline |
 | 9 | C00–C03 | CoRR inventory, download, features and within- vs between-session reliability (C02 --no-gsr, C03 --variant nogsr: without global signal regression) |
 | 10 | B27, B24 | supplementary tables; check of manuscript numbers against result files |
 

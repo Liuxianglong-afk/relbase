@@ -3,7 +3,7 @@ cff-version: 1.2.0
 message: "If you use relbase, please cite the software and the accompanying article."
 title: "relbase: reliability-matched baselines for between-person overlap of extreme normative deviations"
 type: software
-version: 0.1.1
+version: 0.1.2
 license: MIT
 repository-code: "https://github.com/Liuxianglong-afk/relbase"
 authors:
@@ -17,11 +17,8 @@ keywords:
   - functional connectivity
   - heterogeneity
   - autism
-doi: "10.5281/zenodo.23889287"
+doi: "10.5281/zenodo.23874913"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.23889287"
-    description: "Archived release v0.1.1"
   - type: doi
     value: "10.5281/zenodo.23874913"
     description: "All versions"
